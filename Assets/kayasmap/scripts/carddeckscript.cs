@@ -3,18 +3,21 @@ using UnityEngine;
 
 public class carddeckscript : MonoBehaviour
 {
-    public List<GameObject> cards = new List<GameObject>();
+    public manager manager;
     public List<Transform> cardspositions = new List<Transform>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        DealCards();
+        manager = GameObject.Find("manager").GetComponent<manager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            DealCards();
+        }
     }
 
     void DealCards()
@@ -29,10 +32,10 @@ public class carddeckscript : MonoBehaviour
             cardspositions[randomIndex] = temp;
         }
 
-        for (int i = 0; i < cards.Count; i++)
+        for (int i = 0; i < manager.cards.Count; i++)
         {
-            cards[i].transform.position = cardspositions[i].position;
-            cardscript cardscript = cards[i].GetComponent<cardscript>();
+            manager.cards[i].transform.position = cardspositions[i].position;
+            cardscript cardscript = manager.cards[i].GetComponent<cardscript>();
             cardscript.startPos = cardspositions[i].position;
         }
     }

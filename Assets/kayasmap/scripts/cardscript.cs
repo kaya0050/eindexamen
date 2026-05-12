@@ -22,7 +22,8 @@ public class cardscript : MonoBehaviour
 
     public void UseCard()
     {
-        carddeckscript.cards.Remove(gameObject);
+        carddeckscript.manager.cards.Remove(gameObject);
+        Destroy(gameObject);
         SceneManager.LoadScene(minigameescene);
     }
     public void HighlightCard()
