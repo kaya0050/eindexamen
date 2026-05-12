@@ -31,8 +31,9 @@ public class carddeckscript : MonoBehaviour
 
         for (int i = 0; i < cards.Count; i++)
         {
-            Debug.Log(cards.Count);
             cards[i].transform.position = cardspositions[i].position;
+            cardscript cardscript = cards[i].GetComponent<cardscript>();
+            cardscript.startPos = cardspositions[i].position;
         }
     }
 }

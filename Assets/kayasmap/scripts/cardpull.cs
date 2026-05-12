@@ -12,10 +12,8 @@ public class cardpull : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            ShootRay();
-        }
+        ShootRay();
+        
     }
 
     void ShootRay()
@@ -24,11 +22,18 @@ public class cardpull : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray,out hit)){
             Debug.DrawRay(transform.position, transform.forward * 100, Color.red);
-            if (hit.collider.tag == "card")
+            if (hit.collider.tag == "card" && Input.GetMouseButtonDown(0))
             {
                 cardscript card = hit.collider.gameObject.GetComponent<cardscript>();
                 card.UseCard();
             }
+            else if(hit.collider.tag == "card")
+            {
+                cardscript card = hit.collider.gameObject.GetComponent<cardscript>();
+                card.HighlightCard();
+            }
+
         }
     }
+    
 }
