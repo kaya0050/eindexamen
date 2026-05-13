@@ -6,6 +6,7 @@ public class manager : MonoBehaviour
 {
     public bool inMinigame = false;
     public List<GameObject> cards = new List<GameObject>();
+    public List<GameObject> players = new List<GameObject>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,5 +22,20 @@ public class manager : MonoBehaviour
             SceneManager.LoadScene("endscene");
 
         }
+        if (inMinigame)
+        {
+            for (int i = 0; i < players.Count; i++)
+            {
+                players[i].SetActive(true);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < players.Count; i++)
+            {
+                players[i].SetActive(false);
+            }
+        }
     }
+
 }

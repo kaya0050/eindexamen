@@ -7,17 +7,27 @@ public class testerscript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        manager = GameObject.Find("manager").GetComponent<manager>();
-        manager.inMinigame = true;
+        if (GameObject.Find("manager").GetComponent<manager>() != null)
+        {
+            manager = GameObject.Find("manager").GetComponent<manager>();
+            manager.inMinigame = true;
+        }
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Cancel"))
         {
             SceneManager.LoadScene("test");
-            manager.inMinigame = false;
+            if (manager != null)
+            {
+                manager.inMinigame = false;
+            }
+            
         }
+        
+        
     }
 }
