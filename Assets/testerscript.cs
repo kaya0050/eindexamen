@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class testerscript : MonoBehaviour
@@ -18,16 +19,17 @@ public class testerscript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Cancel"))
+        if (Keyboard.current.escapeKey.wasPressedThisFrame ||
+            (Gamepad.current != null && Gamepad.current.startButton.wasPressedThisFrame))
         {
             SceneManager.LoadScene("test");
+
             if (manager != null)
             {
                 manager.inMinigame = false;
             }
-            
         }
-        
-        
+
+
     }
 }

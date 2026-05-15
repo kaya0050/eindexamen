@@ -24,5 +24,6 @@ EditorBuildSettings:
     path: Assets/kayasmap/testscene/test.unity
     guid: 3f2c31624049ec74893d557c1f22fc0b
   m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: f7a6bc6db48b83c4eb74928cfc7be8b6, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 35845fe01580c41289b024647b1d1c53, type: 3}
   m_UseUCBPForAssetBundles: 0

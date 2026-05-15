@@ -29,10 +29,6 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Debug.Log("a");
-        }
 
         Vector3 movement = new Vector3(moveInput.x, 0, moveInput.y);
 
