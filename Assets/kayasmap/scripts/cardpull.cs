@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class cardpull : MonoBehaviour
 {
@@ -18,11 +19,11 @@ public class cardpull : MonoBehaviour
 
     void ShootRay()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         RaycastHit hit;
         if (Physics.Raycast(ray,out hit)){
             Debug.DrawRay(transform.position, transform.forward * 100, Color.red);
-            if (hit.collider.tag == "card" && Input.GetMouseButtonDown(0))
+            if (hit.collider.tag == "card" && Mouse.current.leftButton.wasPressedThisFrame)
             {
                 cardscript card = hit.collider.gameObject.GetComponent<cardscript>();
                 card.UseCard();

@@ -1,10 +1,10 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class testerscript : MonoBehaviour
+public class pickupminigamemanager : MonoBehaviour
 {
     manager manager;
+    public int Timer = 9000;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,14 +13,13 @@ public class testerscript : MonoBehaviour
             manager = GameObject.Find("manager").GetComponent<manager>();
             manager.inMinigame = true;
         }
-       
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current.escapeKey.wasPressedThisFrame ||
-            (Gamepad.current != null && Gamepad.current.startButton.wasPressedThisFrame))
+        Timer--;
+        if (Timer < 0)
         {
             SceneManager.LoadScene("test");
 
@@ -29,7 +28,6 @@ public class testerscript : MonoBehaviour
                 manager.inMinigame = false;
             }
         }
-
-
+        
     }
 }

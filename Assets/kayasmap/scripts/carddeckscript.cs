@@ -15,7 +15,7 @@ public class carddeckscript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Gamepad.current != null && Gamepad.current.startButton.wasPressedThisFrame)
+        if (Gamepad.current != null && Gamepad.current.startButton.wasPressedThisFrame || Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             DealCards();
         }

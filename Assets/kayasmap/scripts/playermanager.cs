@@ -15,6 +15,8 @@ public class playermanager : MonoBehaviour
     public PlayerInput playerInput;
     public InputSystemUIInputModule uiModule;
 
+    public int points = 0;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,7 +29,7 @@ public class playermanager : MonoBehaviour
         {
             buttons.Add(child.gameObject);
         }
-        //input.uiInputModule = GameObject.Find("EventSystem").GetComponent<InputSystemUIInputModule>();
+
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         foreach (var item in buttons)
         {
