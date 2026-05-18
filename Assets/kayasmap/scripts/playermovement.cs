@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    CharacterController characterController;
+    public CharacterController characterController;
 
     public float speed = 5f;
     public float gravity = -10;
@@ -12,20 +12,13 @@ public class PlayerMovement : MonoBehaviour
     Vector2 moveInput;
     float yVelocity;
 
-    manager manager;
+
 
     void Start()
     {
-        if (GameObject.Find("manager").GetComponent<manager>() != null)
-        {
-            manager = GameObject.Find("manager").GetComponent<manager>();
-        }
 
-        manager.players.Add(gameObject);
 
-        DontDestroyOnLoad(gameObject);
 
-        characterController = GetComponent<CharacterController>();
     }
     public void OnMove(InputValue value)
     {

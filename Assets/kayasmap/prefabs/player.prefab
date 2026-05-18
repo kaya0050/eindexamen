@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2185092537524767948
 RectTransform:
   m_ObjectHideFlags: 0
@@ -151,7 +151,7 @@ MonoBehaviour:
   model3: {fileID: 5257486991332047612, guid: 3cf76c3dfc7aafd40b003204b8b20bae, type: 3}
   model4: {fileID: 5257486991332047612, guid: 25eef24a0481004418aed81a4f5386dc, type: 3}
   playerMovement: {fileID: 5448288781658203703}
-  playermanager: {fileID: 1220822997529059466}
+  playerManager: {fileID: 0}
 --- !u!1 &856075323631828721
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,7 +447,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3334727353074457732
 RectTransform:
   m_ObjectHideFlags: 0
@@ -579,7 +579,7 @@ MonoBehaviour:
   model3: {fileID: 5257486991332047612, guid: 3cf76c3dfc7aafd40b003204b8b20bae, type: 3}
   model4: {fileID: 5257486991332047612, guid: 25eef24a0481004418aed81a4f5386dc, type: 3}
   playerMovement: {fileID: 5448288781658203703}
-  playermanager: {fileID: 1220822997529059466}
+  playerManager: {fileID: 0}
 --- !u!1 &4250203591253719100
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,7 +877,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventSystem: {fileID: 0}
-  buttons: []
   buttonsInCanvas: []
   canvas: {fileID: 0}
   playerInput: {fileID: 5943785570370431799}
@@ -895,6 +894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84867e2a003541944b55e48092890a22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterController: {fileID: 2216485586068065288}
   speed: 10
   gravity: -10
   jumpHeight: 0.5
@@ -1055,7 +1055,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8532704496904761060
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1187,7 +1187,7 @@ MonoBehaviour:
   model3: {fileID: 5257486991332047612, guid: 3cf76c3dfc7aafd40b003204b8b20bae, type: 3}
   model4: {fileID: 5257486991332047612, guid: 25eef24a0481004418aed81a4f5386dc, type: 3}
   playerMovement: {fileID: 5448288781658203703}
-  playermanager: {fileID: 1220822997529059466}
+  playerManager: {fileID: 0}
 --- !u!1 &8656893950539421664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,7 +1207,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3214033236798612908
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1339,4 +1339,4 @@ MonoBehaviour:
   model3: {fileID: 5257486991332047612, guid: 3cf76c3dfc7aafd40b003204b8b20bae, type: 3}
   model4: {fileID: 5257486991332047612, guid: 25eef24a0481004418aed81a4f5386dc, type: 3}
   playerMovement: {fileID: 5448288781658203703}
-  playermanager: {fileID: 1220822997529059466}
+  playerManager: {fileID: 0}

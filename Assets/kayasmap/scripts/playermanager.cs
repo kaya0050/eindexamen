@@ -9,33 +9,37 @@ using static Unity.VisualScripting.Metadata;
 public class playermanager : MonoBehaviour
 {
     public EventSystem eventSystem;
-    public List<GameObject> buttons;
-    public List<GameObject> buttonsInCanvas;
+    public GameObject[] buttonsInCanvas;
     public Canvas canvas;
     public PlayerInput playerInput;
     public InputSystemUIInputModule uiModule;
 
     public int points = 0;
-
+    manager manager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        canvas.enabled = true;
+        if (GameObject.Find("manager").GetComponent<manager>() != null)
+        {
+            manager = GameObject.Find("manager").GetComponent<manager>();
+            manager.currentPlayer = gameObject;
+        }
+
+        manager.players.Add(gameObject);
+        DontDestroyOnLoad(gameObject);
         uiModule = FindFirstObjectByType<InputSystemUIInputModule>();
 
         playerInput.uiInputModule = uiModule;
         eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
-        foreach (Transform child in transform)
-        {
-            buttons.Add(child.gameObject);
-        }
 
-        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-        foreach (var item in buttons)
-        {
-            GameObject newb = Instantiate<GameObject>(item,canvas.transform);
-            buttonsInCanvas.Add(newb);
-        }
+        
+
+
+        buttonsInCanvas = GameObject.FindGameObjectsWithTag("button");
+
         eventSystem.SetSelectedGameObject(buttonsInCanvas[0].gameObject);
         Debug.Log(eventSystem.currentSelectedGameObject);
     }

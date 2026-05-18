@@ -7,6 +7,7 @@ public class manager : MonoBehaviour
     public bool inMinigame = false;
     public List<GameObject> cards = new List<GameObject>();
     public List<GameObject> players = new List<GameObject>();
+    public GameObject currentPlayer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
