@@ -21,13 +21,13 @@ public class pickupminigamemanager : MonoBehaviour
         Timer--;
         if (Timer < 0)
         {
-            SceneManager.LoadScene("test");
+            SceneManager.LoadScene("scorescene");
 
             if (manager != null)
             {
                 manager.inMinigame = false;
             }
         }
-        
+        //een funcrrtie om te wisselen naar score scherm
     }
 }

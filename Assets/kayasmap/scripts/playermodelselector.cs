@@ -26,30 +26,16 @@ public class playermodelselector : MonoBehaviour
             playerManager = manager.currentPlayer.GetComponent<playermanager>();
         }
     }
-
+    // selecteerd een model en geeft hem aan de speler
     void Select(GameObject model)
     {
         Instantiate(model,manager.currentPlayer.transform);
         canvas.enabled = false;
     }
+    //funtie verwijzingen alleen voor buttons
+    public void selmodel1() => Select(model1);
+    public void selmodel2() => Select(model2);
+    public void selmodel3() => Select(model3);
+    public void selmodel4() => Select(model4);
 
-    public void selmodel1()
-    {
-        Select(model1);
-    }
-
-    public void selmodel2()
-    {
-        Select(model2);
-    }
-
-    public void selmodel3()
-    {
-        Select(model3);
-    }
-
-    public void selmodel4()
-    {
-        Select(model4);
-    }
 }

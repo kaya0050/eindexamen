@@ -36,11 +36,11 @@ public class manager : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < players.Count; i++)
+            /*for (int i = 0; i < players.Count; i++)
             {
                 players[i].SetActive(false);
                
-            }
+            }*/
             for (int i = 0; i < cards.Count; i++)
             {
                 cards[i].SetActive(true);

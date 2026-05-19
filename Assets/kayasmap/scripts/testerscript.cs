@@ -12,10 +12,10 @@ public class testerscript : MonoBehaviour
         {
             manager = GameObject.Find("manager").GetComponent<manager>();
             manager.inMinigame = true;
-            foreach (var player in manager.players)
+            /*foreach (var player in manager.players)
             {
                 player.transform.position = gameObject.transform.position;
-            }
+            }*/
 
         }
        
