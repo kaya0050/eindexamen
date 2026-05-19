@@ -18,6 +18,7 @@ public class pickupminigamemanager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //een functie om te wisselen naar score scherm
         Timer--;
         if (Timer < 0)
         {
@@ -28,6 +29,6 @@ public class pickupminigamemanager : MonoBehaviour
                 manager.inMinigame = false;
             }
         }
-        //een funcrrtie om te wisselen naar score scherm
+        
     }
 }

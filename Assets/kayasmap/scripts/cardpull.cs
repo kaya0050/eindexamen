@@ -1,40 +1,65 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
+using System.Linq;
 
-public class cardpull : MonoBehaviour
+public class CardCarousel : MonoBehaviour
 {
+    public List<cardscript> cards;
+    public InputActionReference moveAction;
+    public InputActionReference selectAction;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private int selectedIndex = 0;
+    private Vector2 input;
+
+    void OnEnable()
     {
-
+        moveAction.action.Enable();
+        selectAction.action.Enable();
     }
 
-    // Update is called once per frame
+    void OnDisable()
+    {
+        moveAction.action.Disable();
+        selectAction.action.Disable();
+    }
+
     void Update()
     {
-        ShootRay();
-        
+        cards = FindObjectsByType<cardscript>(FindObjectsSortMode.None).ToList<cardscript>();
+        HandleInput();
+        UpdateHighlight();
     }
 
-    void ShootRay()
+    void HandleInput()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-        RaycastHit hit;
-        if (Physics.Raycast(ray,out hit)){
-            Debug.DrawRay(transform.position, transform.forward * 100, Color.red);
-            if (hit.collider.tag == "card" && Mouse.current.leftButton.wasPressedThisFrame)
-            {
-                cardscript card = hit.collider.gameObject.GetComponent<cardscript>();
-                card.UseCard();
-            }
-            else if(hit.collider.tag == "card")
-            {
-                cardscript card = hit.collider.gameObject.GetComponent<cardscript>();
-                card.HighlightCard();
-            }
+        input = moveAction.action.ReadValue<Vector2>();
 
+        // -> naar rechts
+        if (input.x > 0.5f)
+        {
+            selectedIndex = (selectedIndex + 1) % cards.Count;
+        }
+        // <- naar links
+        else if (input.x < -0.5f)
+        {
+            selectedIndex--;
+            if (selectedIndex < 0) selectedIndex = cards.Count - 1;
+        }
+
+        //use card
+        if (selectAction.action.WasPressedThisFrame())
+        {
+            cards[selectedIndex].UseCard();
         }
     }
-    
+
+    void UpdateHighlight()
+    {
+        for (int i = 0; i < cards.Count; i++)
+        {
+            if (i == selectedIndex)
+                cards[i].HighlightCard();
+        }
+    }
 }

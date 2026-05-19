@@ -24,6 +24,7 @@ public class cardscript : MonoBehaviour
     {
         carddeckscript.manager.cards.Remove(gameObject);
         Destroy(gameObject);
+        carddeckscript.manager.inMinigame = true;
         SceneManager.LoadScene(minigameescene);
     }
     public void HighlightCard()

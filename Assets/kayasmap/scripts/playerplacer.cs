@@ -7,11 +7,14 @@ public class playerplacer : MonoBehaviour
     public List<GameObject> players = new List<GameObject>();
     public List<GameObject> places = new List<GameObject>();
 
+    public bool blockmoving = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
         players = GameObject.FindGameObjectsWithTag("Player").ToList<GameObject>();
+        players = players.OrderByDescending(p => p.GetComponent<playermanager>().points).ToList();
         for (int i = 0; i < players.Count; i++)
         {
             CharacterController cc = players[i].GetComponent<CharacterController>();
@@ -36,7 +39,16 @@ public class playerplacer : MonoBehaviour
             }
 
             Debug.Log(players[i].transform.position);
+            if (blockmoving)
+            {
+                players[i].GetComponent<PlayerMovement>().enabled = false;
+            }
+            else
+            {
+                players[i].GetComponent<PlayerMovement>().enabled = true;
+            }
         }
+        
     }
 
     // Update is called once per frame

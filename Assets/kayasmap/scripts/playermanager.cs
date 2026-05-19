@@ -8,6 +8,7 @@ using static Unity.VisualScripting.Metadata;
 
 public class playermanager : MonoBehaviour
 {
+    public int index = 0;
     public EventSystem eventSystem;
     public GameObject[] buttonsInCanvas;
     public Canvas canvas;
@@ -20,28 +21,19 @@ public class playermanager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-        canvas.enabled = true;
-        if (GameObject.Find("manager").GetComponent<manager>() != null)
-        {
-            manager = GameObject.Find("manager").GetComponent<manager>();
-            manager.currentPlayer = gameObject;
-        }
-
-        manager.players.Add(gameObject);
         DontDestroyOnLoad(gameObject);
+        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+        buttonsInCanvas = GameObject.FindGameObjectsWithTag("button");
+        manager = GameObject.Find("manager").GetComponent<manager>();
         uiModule = FindFirstObjectByType<InputSystemUIInputModule>();
 
+        manager.currentPlayer = gameObject;
+        canvas.enabled = true;
+        index = manager.players.Count;
+        manager.players.Add(gameObject);
         playerInput.uiInputModule = uiModule;
-        eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
-
-        
-
-
-        buttonsInCanvas = GameObject.FindGameObjectsWithTag("button");
-
         eventSystem.SetSelectedGameObject(buttonsInCanvas[0].gameObject);
-        Debug.Log(eventSystem.currentSelectedGameObject);
     }
 
     // Update is called once per frame

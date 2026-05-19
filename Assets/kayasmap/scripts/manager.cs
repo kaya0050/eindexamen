@@ -29,22 +29,6 @@ public class manager : MonoBehaviour
             {
                 players[i].SetActive(true);
             }
-            for (int i = 0; i < cards.Count; i++)
-            {
-                cards[i].SetActive(false);
-            }
-        }
-        else
-        {
-            /*for (int i = 0; i < players.Count; i++)
-            {
-                players[i].SetActive(false);
-               
-            }*/
-            for (int i = 0; i < cards.Count; i++)
-            {
-                cards[i].SetActive(true);
-            }
         }
     }
 
