@@ -8,34 +8,29 @@ public class playermodelselector : MonoBehaviour
     public GameObject model4;
 
     public PlayerMovement playerMovement;
-    public playermanager playermanager;
+    public playermanager playerManager;
 
-    bool hasSelectedModel = false;
+    public manager manager;
+    public Canvas canvas;
 
     void Start()
     {
-        playerMovement.enabled = false;
+
     }
 
     void Update()
     {
-        if (!hasSelectedModel)
+        if (manager && manager.currentPlayer)
         {
-
+            playerMovement = manager.currentPlayer.GetComponent<PlayerMovement>();
+            playerManager = manager.currentPlayer.GetComponent<playermanager>();
         }
     }
 
     void Select(GameObject model)
     {
-        Instantiate(model, playermanager.gameObject.transform);
-
-        hasSelectedModel = true;
-        playerMovement.enabled = true;
-        for (int i = 0; i < playermanager.buttonsInCanvas.Count; i++)
-        {
-            playermanager.buttonsInCanvas[i].active = false;
-        }
-        
+        Instantiate(model,manager.currentPlayer.transform);
+        canvas.enabled = false;
     }
 
     public void selmodel1()

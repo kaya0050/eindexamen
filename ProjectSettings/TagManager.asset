@@ -5,7 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - card
-  - Ground
+  - button
   layers:
   - Default
   - TransparentFX
