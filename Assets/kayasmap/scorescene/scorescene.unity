@@ -1289,6 +1289,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 836660735783136784, guid: 114842739d9be9849839651bd65df398, type: 3}
+      propertyPath: basedOnPoints
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 836660735783136784, guid: 114842739d9be9849839651bd65df398, type: 3}
       propertyPath: 'places.Array.data[0]'
       value: 
       objectReference: {fileID: 1474807335}

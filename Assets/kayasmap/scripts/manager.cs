@@ -8,6 +8,7 @@ public class manager : MonoBehaviour
     public List<GameObject> cards = new List<GameObject>();
     public List<GameObject> players = new List<GameObject>();
     public GameObject currentPlayer;
+    public int currentPlayerTurn;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -31,5 +32,13 @@ public class manager : MonoBehaviour
             }
         }
     }
+    public void NextTurn()
+    {
+        if (players.Count == 0) return;
 
+        currentPlayerTurn++;
+
+        if (currentPlayerTurn >= players.Count)
+            currentPlayerTurn = 0;
+    }
 }
