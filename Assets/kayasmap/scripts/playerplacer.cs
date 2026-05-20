@@ -8,13 +8,22 @@ public class playerplacer : MonoBehaviour
     public List<GameObject> places = new List<GameObject>();
 
     public bool blockmoving = false;
+    public bool basedOnPoints = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
         players = GameObject.FindGameObjectsWithTag("Player").ToList<GameObject>();
-        players = players.OrderByDescending(p => p.GetComponent<playermanager>().points).ToList();
+        if (basedOnPoints)
+        {
+            players = players.OrderByDescending(p => p.GetComponent<playermanager>().points).ToList();
+        }
+        else
+        {
+            players = players.OrderBy(p => p.GetComponent<playermanager>().index).ToList();
+        }
+       
         for (int i = 0; i < players.Count; i++)
         {
             CharacterController cc = players[i].GetComponent<CharacterController>();
