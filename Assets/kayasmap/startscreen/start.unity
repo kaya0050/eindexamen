@@ -133,7 +133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6916045164821626316, guid: ad7b8420fe96365469d8253d3fcf794c, type: 3}
       propertyPath: currentPlayerTurn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7316484190237212736, guid: ad7b8420fe96365469d8253d3fcf794c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1793,40 +1793,6 @@ MonoBehaviour:
   - {fileID: 1416733337}
   - {fileID: 1005413383}
   playerInput: {fileID: 0}
-  moveAction:
-    m_Name: Move
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: e1457b24-50b5-49de-a585-fa226356d189
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 17da3697-98f9-4a12-aebd-210090d595f6
-      m_Path: <Gamepad>/dpad
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 0
-    m_Flags: 0
-  selectAction:
-    m_Name: Select
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: a1c18f98-015b-43e3-b6f6-d708a91397fb
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 15d86142-86b6-45e2-b02e-f7d9fb1be545
-      m_Path: <Gamepad>/buttonNorth
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Select
-      m_Flags: 0
-    m_Flags: 0
 --- !u!4 &1757051379 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7316484190237212736, guid: ad7b8420fe96365469d8253d3fcf794c, type: 3}
