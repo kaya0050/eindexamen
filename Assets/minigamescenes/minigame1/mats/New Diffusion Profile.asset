@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2686e09ec7aef44bad2843e4416f057, type: 3}
+  m_Name: New Diffusion Profile
+  m_EditorClassIdentifier: 
+  profile:
+    scatteringDistance: {r: 0.020018967, g: 1, b: 0, a: 1}
+    scatteringDistanceMultiplier: 0.6
+    transmissionTint: {r: 0.020617366, g: 1, b: 0, a: 1}
+    texturingMode: 0
+    smoothnessMultipliers: {x: 1, y: 2}
+    lobeMix: 1
+    diffuseShadingPower: 3
+    transmissionMode: 1
+    thicknessRemap: {x: 0.15, y: 0.8510612}
+    worldScale: 34.8
+    ior: 2
+    hash: 1075759482
+  m_Version: 2
