@@ -18,6 +18,10 @@ public class manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        foreach (var item in cards)
+        {
+            item.active = !inMinigame;
+        }
         if (cards.Count <= 0 && !inMinigame)
         {
             Debug.Log("game end");
