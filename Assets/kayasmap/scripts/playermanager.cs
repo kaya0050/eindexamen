@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.UI;
-using static Unity.VisualScripting.Metadata;
+
 
 public class playermanager : MonoBehaviour
 {

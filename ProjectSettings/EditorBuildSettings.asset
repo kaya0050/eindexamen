@@ -5,9 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/OutdoorsScene.unity
     guid: 8124e5870f4fd4c779e7a5f994e84ad1
+  - enabled: 1
+    path: Assets/kayasmap/startscreen/start.unity
+    guid: bf149325db6c0d34c95a3af4423242fb
+  - enabled: 1
+    path: Assets/kayasmap/testscene/test.unity
+    guid: 3f2c31624049ec74893d557c1f22fc0b
   - enabled: 1
     path: Assets/minigamescenes/minigame1/minigame1.unity
     guid: 11e73c5fe1f252f4c8c23a48249f901c
@@ -18,14 +24,11 @@ EditorBuildSettings:
     path: Assets/MarshallsMap/Scenes/minigame3.unity
     guid: 187bc7357793ac448b18e02a8811de64
   - enabled: 1
-    path: Assets/kayasmap/endscene/endscene.unity
-    guid: c466ed8a4401c4048951e74614fd27e4
-  - enabled: 1
-    path: Assets/kayasmap/testscene/test.unity
-    guid: 3f2c31624049ec74893d557c1f22fc0b
-  - enabled: 1
     path: Assets/kayasmap/scorescene/scorescene.unity
     guid: 1bcaeccc1ad28f24fb900c4e7b9d2fd1
+  - enabled: 1
+    path: Assets/kayasmap/endscene/endscene.unity
+    guid: c466ed8a4401c4048951e74614fd27e4
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: f7a6bc6db48b83c4eb74928cfc7be8b6, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 35845fe01580c41289b024647b1d1c53, type: 3}
