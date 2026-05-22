@@ -7,13 +7,32 @@ public class PlayerScriptMinigame3 : MonoBehaviour
 
     public int health = 2;
 
+    public bool isAlive = true;
+
+    public Transform deathPosition;
+
     void Start()
     {
         health = 2;
+
+        if (deathPosition == null)
+        {
+            GameObject dp = GameObject.Find("DeathPosition");
+            if (dp != null)
+            {
+                deathPosition = dp.transform;
+            }
+            else
+            {
+                Debug.LogError("DeathPosition niet gevonden in de scene!");
+            }
+        }
     }
 
     void Update()
     {
+
+
         if (health <= 0)
         {
             GetPlayerOffScreen();
@@ -22,6 +41,7 @@ public class PlayerScriptMinigame3 : MonoBehaviour
 
     public void GetPlayerOffScreen()
     {
-
+        isAlive = false;
+        transform.position = deathPosition.position;
     }
 }
