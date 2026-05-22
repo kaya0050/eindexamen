@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManagerScript : MonoBehaviour
 {
@@ -9,8 +10,6 @@ public class UIManagerScript : MonoBehaviour
 
     public TextMeshProUGUI timerText;
 
-    public GameObject endScreen;
-
     void Update()
     {
         if (fireBallSpawner.gameStarted && timer > 0)
@@ -19,7 +18,7 @@ public class UIManagerScript : MonoBehaviour
 
             if (timer <= 0)
             {
-                endScreen.SetActive(true);
+                SceneManager.LoadScene("scorescene");
             }
         }
 
