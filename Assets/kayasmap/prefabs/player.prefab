@@ -152,6 +152,8 @@ MonoBehaviour:
   model4: {fileID: 5257486991332047612, guid: 25eef24a0481004418aed81a4f5386dc, type: 3}
   playerMovement: {fileID: 5448288781658203703}
   playerManager: {fileID: 0}
+  manager: {fileID: 0}
+  canvas: {fileID: 0}
 --- !u!1 &856075323631828721
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,6 +582,8 @@ MonoBehaviour:
   model4: {fileID: 5257486991332047612, guid: 25eef24a0481004418aed81a4f5386dc, type: 3}
   playerMovement: {fileID: 5448288781658203703}
   playerManager: {fileID: 0}
+  manager: {fileID: 0}
+  canvas: {fileID: 0}
 --- !u!1 &4250203591253719100
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,6 +737,7 @@ GameObject:
   - component: {fileID: 5943785570370431799}
   - component: {fileID: 1220822997529059466}
   - component: {fileID: 5448288781658203703}
+  - component: {fileID: 1057609105160115905}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -876,6 +881,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 560ade6571b4eb54793221ecc68d73aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
   eventSystem: {fileID: 0}
   buttonsInCanvas: []
   canvas: {fileID: 0}
@@ -898,6 +904,105 @@ MonoBehaviour:
   speed: 10
   gravity: -10
   jumpHeight: 0.5
+  AudioSource: {fileID: 1057609105160115905}
+  jumpSound: {fileID: 8300000, guid: 57e04997fb789254cb752de04ab62550, type: 3}
+--- !u!82 &1057609105160115905
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4369045213281506472}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 57e04997fb789254cb752de04ab62550, type: 3}
+  m_Resource: {fileID: 8300000, guid: 57e04997fb789254cb752de04ab62550, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &7762610984891478017
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,6 +1293,8 @@ MonoBehaviour:
   model4: {fileID: 5257486991332047612, guid: 25eef24a0481004418aed81a4f5386dc, type: 3}
   playerMovement: {fileID: 5448288781658203703}
   playerManager: {fileID: 0}
+  manager: {fileID: 0}
+  canvas: {fileID: 0}
 --- !u!1 &8656893950539421664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1340,3 +1447,5 @@ MonoBehaviour:
   model4: {fileID: 5257486991332047612, guid: 25eef24a0481004418aed81a4f5386dc, type: 3}
   playerMovement: {fileID: 5448288781658203703}
   playerManager: {fileID: 0}
+  manager: {fileID: 0}
+  canvas: {fileID: 0}

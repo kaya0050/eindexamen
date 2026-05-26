@@ -11,7 +11,8 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 moveInput;
     float yVelocity;
-
+    public AudioSource AudioSource;
+    public AudioClip jumpSound;
 
 
     void Start()
@@ -28,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (characterController.isGrounded)
         {
+            AudioSource.PlayOneShot(jumpSound, 1);
             yVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
     }

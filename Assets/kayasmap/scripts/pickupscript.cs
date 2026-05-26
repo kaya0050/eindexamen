@@ -3,6 +3,7 @@ using UnityEngine;
 public class pickupscript : MonoBehaviour
 {
     public int points;
+    public int deathTime;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,6 +14,14 @@ public class pickupscript : MonoBehaviour
     void Update()
     {
         
+    }
+    private void FixedUpdate()
+    {
+        deathTime--;
+        if (deathTime < 0)
+        {
+            Destroy(gameObject);
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
