@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,7 +8,13 @@ public class MainMenuScript : MonoBehaviour
     public GameObject optionMenu;
     public GameObject statsMenu;
     public GameObject playerSelectMenu;
+    public TextMeshProUGUI playercount;
+    public manager manager;
 
+    public void Update()
+    {
+        playercount.text = manager.players.Count.ToString();
+    }
     public void OpenOptionsMenu()
     {
         // deze functie word aan een button gekoppeld zodat je het options menu kan openen.

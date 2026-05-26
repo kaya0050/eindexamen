@@ -44,6 +44,7 @@ public class PlayerSelectScript : MonoBehaviour
 
     void Update()
     {
+        currentPlayerAmount = manager.players.Count;
         bool allReady = false;
 
         if (currentPlayerAmount > 1)
