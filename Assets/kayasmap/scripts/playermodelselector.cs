@@ -7,9 +7,6 @@ public class playermodelselector : MonoBehaviour
     public GameObject model3;
     public GameObject model4;
 
-    public PlayerMovement playerMovement;
-    public playermanager playerManager;
-
     public manager manager;
     public Canvas canvas;
 
@@ -20,11 +17,6 @@ public class playermodelselector : MonoBehaviour
 
     void Update()
     {
-        if (manager && manager.currentPlayer)
-        {
-            playerMovement = manager.currentPlayer.GetComponent<PlayerMovement>();
-            playerManager = manager.currentPlayer.GetComponent<playermanager>();
-        }
     }
     // selecteerd een model en geeft hem aan de speler
     void Select(GameObject model)

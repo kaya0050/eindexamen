@@ -1,4 +1,3 @@
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,13 +10,22 @@ public class PlayerSelectScript : MonoBehaviour
     {
         public GameObject playerPanel;
 
+        // Preview modellen in menu
         public GameObject[] characterModels;
-
+        public GameObject[] characterModelsTrue;
         [HideInInspector]
         public int currentCharacter;
 
         [HideInInspector]
         public bool ready;
+
+        // Het echte gekozen prefab
+        [HideInInspector]
+        public GameObject selectedCharacter;
+
+        // Geinstantieerde speler
+        [HideInInspector]
+        public GameObject spawnedCharacter;
 
         public TextMeshProUGUI readyText;
         public TextMeshProUGUI joinText;
@@ -30,6 +38,7 @@ public class PlayerSelectScript : MonoBehaviour
     public PlayerSlot[] players;
 
     public int currentPlayerAmount;
+    public manager manager;
 
     public GameObject startButton;
 
@@ -54,16 +63,16 @@ public class PlayerSelectScript : MonoBehaviour
         {
             bool active = i < currentPlayerAmount;
 
-            for (int j = 0; j < players[i].characterModels.Length; j++)
-            {
-                players[i].characterModels[j].SetActive(active);
-                players[i].joinText.gameObject.SetActive(!active);
-                players[i].readyButton.gameObject.SetActive(active);
-            }
+            players[i].joinText.gameObject.SetActive(!active);
+            players[i].readyButton.gameObject.SetActive(active);
 
             if (active)
             {
                 ShowCharacter(i);
+            }
+            else
+            {
+                HideAllCharacters(i);
             }
         }
 
@@ -72,6 +81,9 @@ public class PlayerSelectScript : MonoBehaviour
 
     public void NextCharacter(int playerIndex)
     {
+        if (players[playerIndex].ready)
+            return;
+
         players[playerIndex].currentCharacter++;
 
         if (players[playerIndex].currentCharacter >= players[playerIndex].characterModels.Length)
@@ -84,6 +96,9 @@ public class PlayerSelectScript : MonoBehaviour
 
     public void PreviousCharacter(int playerIndex)
     {
+        if (players[playerIndex].ready)
+            return;
+
         players[playerIndex].currentCharacter--;
 
         if (players[playerIndex].currentCharacter < 0)
@@ -97,29 +112,63 @@ public class PlayerSelectScript : MonoBehaviour
 
     public void ToggleReady(int playerIndex)
     {
-        players[playerIndex].ready = !players[playerIndex].ready;
+        PlayerSlot player = players[playerIndex];
 
-        if (players[playerIndex].ready)
+        player.ready = !player.ready;
+
+        if (player.ready)
         {
-            players[playerIndex].readyText.text = "Ready";
-            players[playerIndex].nextButton.gameObject.SetActive(false);
-            players[playerIndex].previousButton.gameObject.SetActive(false);
-        } else
+            player.readyText.text = "Ready";
+
+            player.nextButton.gameObject.SetActive(false);
+            player.previousButton.gameObject.SetActive(false);
+
+            // gekozen prefab opslaan
+            player.selectedCharacter =
+                player.characterModelsTrue[player.currentCharacter];
+
+            // oude verwijderen indien nodig
+            if (player.spawnedCharacter != null)
+            {
+                Destroy(player.spawnedCharacter);
+            }
+
+            // speler model spawnen
+            Instantiate(
+                player.selectedCharacter,
+                manager.players[playerIndex].transform
+            );
+        }
+        else
         {
-            players[playerIndex].readyText.text = "Not ready";
-            players[playerIndex].nextButton.gameObject.SetActive(true);
-            players[playerIndex].previousButton.gameObject.SetActive(true);
+            player.readyText.text = "Not Ready";
+
+            player.nextButton.gameObject.SetActive(true);
+            player.previousButton.gameObject.SetActive(true);
+
+            // spawned model verwijderen
+            if (player.spawnedCharacter != null)
+            {
+                Destroy(player.spawnedCharacter);
+            }
         }
     }
 
     void ShowCharacter(int playerIndex)
     {
+        HideAllCharacters(playerIndex);
+
+        players[playerIndex]
+            .characterModels[players[playerIndex].currentCharacter]
+            .SetActive(true);
+    }
+
+    void HideAllCharacters(int playerIndex)
+    {
         for (int i = 0; i < players[playerIndex].characterModels.Length; i++)
         {
             players[playerIndex].characterModels[i].SetActive(false);
         }
-
-        players[playerIndex].characterModels[players[playerIndex].currentCharacter].SetActive(true);
     }
 
     public void StartGame()

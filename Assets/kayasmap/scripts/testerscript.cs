@@ -11,7 +11,7 @@ public class testerscript : MonoBehaviour
         if (GameObject.Find("manager").GetComponent<manager>() != null)
         {
             manager = GameObject.Find("manager").GetComponent<manager>();
-            manager.inMinigame = true;
+            //manager.inMinigame = true;
             /*foreach (var player in manager.players)
             {
                 player.transform.position = gameObject.transform.position;
