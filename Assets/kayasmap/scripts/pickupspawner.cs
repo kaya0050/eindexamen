@@ -8,6 +8,8 @@ public class pickupspawner : MonoBehaviour
     public int timer;
     public BoxCollider spawnArea;
     public int height = 5;
+    public AudioSource AudioSource;
+    public AudioClip popsound;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -36,6 +38,7 @@ public class pickupspawner : MonoBehaviour
 
     void SpawnPickup()
     {
+        AudioSource.PlayOneShot(popsound,1);
         Bounds bounds = spawnArea.bounds;
 
         float randomX = Random.Range(bounds.min.x, bounds.max.x);

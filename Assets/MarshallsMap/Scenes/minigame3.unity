@@ -393,7 +393,6 @@ MonoBehaviour:
   timer: 180
   fireBallSpawner: {fileID: 462584541}
   timerText: {fileID: 874246139}
-  endScreen: {fileID: 2099697179}
 --- !u!1 &466869639
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,6 +1061,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 836660735783136784, guid: 114842739d9be9849839651bd65df398, type: 3}
+      propertyPath: blockmoving
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 836660735783136784, guid: 114842739d9be9849839651bd65df398, type: 3}
       propertyPath: players.Array.size
       value: 0
