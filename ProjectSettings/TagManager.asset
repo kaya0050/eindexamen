@@ -6,6 +6,8 @@ TagManager:
   tags:
   - card
   - button
+  - Ground
+  - FireBall
   layers:
   - Default
   - TransparentFX
