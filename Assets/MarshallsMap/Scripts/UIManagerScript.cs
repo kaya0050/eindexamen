@@ -35,6 +35,8 @@ public class UIManagerScript : MonoBehaviour
             }
         }
 
+        alivePlayers = 0;
+
         PlayerScriptMinigame3[] players = FindObjectsByType<PlayerScriptMinigame3>(FindObjectsSortMode.None);
 
         foreach (PlayerScriptMinigame3 player in players)
