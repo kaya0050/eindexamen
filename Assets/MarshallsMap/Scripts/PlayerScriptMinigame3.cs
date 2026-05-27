@@ -2,14 +2,15 @@ using UnityEngine;
 
 public class PlayerScriptMinigame3 : MonoBehaviour
 {
-    //public GameObject heart1;
-    //public GameObject heart2;
-
     public int health = 2;
+    public int earnedScore;
 
     public bool isAlive = true;
+    public bool giveScore = true;
 
     public Transform deathPosition;
+
+    public UIManagerScript manager;
 
     void Start()
     {
@@ -18,9 +19,12 @@ public class PlayerScriptMinigame3 : MonoBehaviour
 
     void Update()
     {
+        manager = GameObject.FindAnyObjectByType<UIManagerScript>();
+
         if (deathPosition == null)
         {
             GameObject dp = GameObject.Find("DeathPosition");
+
             if (dp != null)
             {
                 deathPosition = dp.transform;
@@ -31,9 +35,41 @@ public class PlayerScriptMinigame3 : MonoBehaviour
             }
         }
 
-        if (health <= 0)
+        if (health == 0)
         {
+            giveScore = true;
+            CheckEarnedScore();
             GetPlayerOffScreen();
+        }
+    }
+
+    public void CheckEarnedScore()
+    {
+        if (giveScore)
+        {
+            switch (manager.alivePlayers)
+            {
+                case 4:
+                    earnedScore = 0;
+                    health = -1;
+                    giveScore = false;
+                    break;
+                case 3:
+                    earnedScore = 50;
+                    health = -1;
+                    giveScore = false;
+                    break;
+                case 2:
+                    earnedScore = 100;
+                    health = -1;
+                    giveScore = false;
+                    break;
+                case 1:
+                    earnedScore = 150;
+                    health = -1;
+                    giveScore = false;
+                    break;
+            }
         }
     }
 
