@@ -9,6 +9,7 @@ public class manager : MonoBehaviour
     public List<GameObject> players = new List<GameObject>();
     public GameObject currentPlayer;
     public int currentPlayerTurn;
+    bool ending = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,10 +23,12 @@ public class manager : MonoBehaviour
         {
             item.active = !inMinigame;
         }
-        if (cards.Count <= 0 && !inMinigame)
+        if (cards.Count <= 0 && !inMinigame && !ending)
         {
+            ending = true;
             Debug.Log("game end");
             SceneManager.LoadScene("endscene");
+
 
         }
         if (inMinigame)

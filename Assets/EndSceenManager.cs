@@ -2,31 +2,39 @@ using System;
 using System.IO;
 using TMPro;
 using UnityEngine;
-using static UnityEditor.Progress;
+using UnityEngine.SceneManagement;
 
-public class EndSceenManager : MonoBehaviour
+public class Menu : MonoBehaviour
 {
-    manager manager;
-    public TextMeshProUGUI scoretext;
     [Serializable]
     public class Stats
     {
+        public string playerName;
         public int points;
-        public int playerindex;
     }
 
     Stats score = new Stats();
-    Stats scorecompare = new Stats();
+
     string savePath;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    public TextMeshProUGUI points;
+
+
+    public TMP_InputField nameInput;
+    manager manager;
+
     void Start()
     {
-        savePath = Path.Combine(Application.persistentDataPath, "score.json");
         manager = GameObject.FindAnyObjectByType<manager>();
-        LoadStats();
-        SaveStats();
+        savePath = Path.Combine(Application.persistentDataPath, "save.json");
 
+        LoadStats();
+
+        nameInput.text = score.playerName;
+
+        Updatetext();
     }
+
     public void SaveStats()
     {
         playermanager bestPlayer = null;
@@ -35,44 +43,44 @@ public class EndSceenManager : MonoBehaviour
         {
             playermanager player = item.GetComponent<playermanager>();
 
-            if (player.points > scorecompare.points)
+            if (bestPlayer == null || player.points > bestPlayer.points)
             {
-                if (bestPlayer == null || player.points > bestPlayer.points)
-                {
-                    bestPlayer = player;
-                }
+                bestPlayer = player;
             }
         }
 
-        if (bestPlayer != null)
+        if (bestPlayer.points > score.points)
         {
+            score.playerName = nameInput.text;
             score.points = bestPlayer.points;
-            score.playerindex = bestPlayer.index;
 
             string json = JsonUtility.ToJson(score, true);
             File.WriteAllText(savePath, json);
 
-            Debug.Log("highscore earned and saved to: " + savePath);
+            Debug.Log("Saved to: " + savePath);
         }
         else
         {
-            Debug.Log("no highscore earned");
+            Debug.Log("No new highscore.");
         }
-    }
+        
+        LoadStats();
 
+        Updatetext();
+    }
+    public void Updatetext()
+    {
+        points.text = "highscore: " + score.playerName + " points: " + score.points;
+    }
     public void LoadStats()
     {
         if (File.Exists(savePath))
         {
             string json = File.ReadAllText(savePath);
+
             score = JsonUtility.FromJson<Stats>(json);
-            scorecompare = JsonUtility.FromJson<Stats>(json);
+
             Debug.Log("Loaded!");
         }
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        scoretext.text = "hi score: " + score.points.ToString();
     }
 }
