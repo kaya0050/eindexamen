@@ -8,6 +8,9 @@ public class PlayerScriptMinigame3 : MonoBehaviour
 
     public bool isAlive = true;
     public bool giveScore = true;
+    public bool laatsteSpeler = false;
+
+    public float endGameTimer = 3f;
 
     public Transform deathPosition;
 
@@ -44,6 +47,16 @@ public class PlayerScriptMinigame3 : MonoBehaviour
             CheckEarnedScore();
             GetPlayerOffScreen();
         }
+
+        if (laatsteSpeler)
+        {
+            endGameTimer -= Time.deltaTime;
+        }
+
+        if (endGameTimer <= 0)
+        {
+            SceneManager.LoadScene("scorescene");
+        }
     }
 
     public void CheckEarnedScore()
@@ -69,13 +82,13 @@ public class PlayerScriptMinigame3 : MonoBehaviour
                     playerManager.points += earnedScore;
                     health = -1;
                     giveScore = false;
+                    laatsteSpeler = true;
                     break;
                 case 1:
                     earnedScore = 150;
                     playerManager.points += earnedScore;
                     health = -1;
                     giveScore = false;
-                    SceneManager.LoadScene("scorescene");
                     break;
             }
         }
