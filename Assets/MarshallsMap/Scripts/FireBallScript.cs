@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class FireBallScript : MonoBehaviour
 {
+    public bool hasHit = false;
+
     public float moveSpeed = 1f;
     public float lifeTime = 1f;
 
@@ -17,8 +19,11 @@ public class FireBallScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (hasHit) return;
+
         if (other.CompareTag("Player") || other.CompareTag("Ground"))
         {
+            hasHit = true;
             Destroy(gameObject);
         }
     }

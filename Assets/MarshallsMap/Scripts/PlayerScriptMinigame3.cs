@@ -39,9 +39,8 @@ public class PlayerScriptMinigame3 : MonoBehaviour
             }
         }
 
-        if (health == 0)
+        if (health == 0 && isAlive)
         {
-            giveScore = true;
             CheckEarnedScore();
             GetPlayerOffScreen();
         }
