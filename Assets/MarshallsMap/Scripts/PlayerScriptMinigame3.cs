@@ -10,16 +10,19 @@ public class PlayerScriptMinigame3 : MonoBehaviour
 
     public Transform deathPosition;
 
-    public UIManagerScript manager;
+    public UIManagerScript uiManager;
+    public playermanager playerManager;
 
     void Start()
     {
+        playerManager = GameObject.FindAnyObjectByType<playermanager>();
+
         health = 2;
     }
 
     void Update()
     {
-        manager = GameObject.FindAnyObjectByType<UIManagerScript>();
+        uiManager = GameObject.FindAnyObjectByType<UIManagerScript>();
 
         if (deathPosition == null)
         {
@@ -47,25 +50,29 @@ public class PlayerScriptMinigame3 : MonoBehaviour
     {
         if (giveScore)
         {
-            switch (manager.alivePlayers)
+            switch (uiManager.alivePlayers)
             {
                 case 4:
                     earnedScore = 0;
+                    playerManager.points += earnedScore;
                     health = -1;
                     giveScore = false;
                     break;
                 case 3:
                     earnedScore = 50;
+                    playerManager.points += earnedScore;
                     health = -1;
                     giveScore = false;
                     break;
                 case 2:
                     earnedScore = 100;
+                    playerManager.points += earnedScore;
                     health = -1;
                     giveScore = false;
                     break;
                 case 1:
                     earnedScore = 150;
+                    playerManager.points += earnedScore;
                     health = -1;
                     giveScore = false;
                     break;
