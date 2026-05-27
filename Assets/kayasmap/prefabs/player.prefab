@@ -150,8 +150,6 @@ MonoBehaviour:
   model2: {fileID: 5257486991332047612, guid: 44712344b2c81c249afa60f5398bd4a1, type: 3}
   model3: {fileID: 5257486991332047612, guid: 3cf76c3dfc7aafd40b003204b8b20bae, type: 3}
   model4: {fileID: 5257486991332047612, guid: 25eef24a0481004418aed81a4f5386dc, type: 3}
-  playerMovement: {fileID: 5448288781658203703}
-  playerManager: {fileID: 0}
   manager: {fileID: 0}
   canvas: {fileID: 0}
 --- !u!1 &856075323631828721
@@ -580,8 +578,6 @@ MonoBehaviour:
   model2: {fileID: 5257486991332047612, guid: 44712344b2c81c249afa60f5398bd4a1, type: 3}
   model3: {fileID: 5257486991332047612, guid: 3cf76c3dfc7aafd40b003204b8b20bae, type: 3}
   model4: {fileID: 5257486991332047612, guid: 25eef24a0481004418aed81a4f5386dc, type: 3}
-  playerMovement: {fileID: 5448288781658203703}
-  playerManager: {fileID: 0}
   manager: {fileID: 0}
   canvas: {fileID: 0}
 --- !u!1 &4250203591253719100
@@ -738,6 +734,7 @@ GameObject:
   - component: {fileID: 1220822997529059466}
   - component: {fileID: 5448288781658203703}
   - component: {fileID: 1057609105160115905}
+  - component: {fileID: 5598550723873462465}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -1003,6 +1000,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5598550723873462465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4369045213281506472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9f1b82ac4185164691580e74f442b9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heart1: {fileID: 0}
+  heart2: {fileID: 0}
+  health: 2
+  isAlive: 1
+  deathPosition: {fileID: 0}
 --- !u!1 &7762610984891478017
 GameObject:
   m_ObjectHideFlags: 0
@@ -1291,8 +1305,6 @@ MonoBehaviour:
   model2: {fileID: 5257486991332047612, guid: 44712344b2c81c249afa60f5398bd4a1, type: 3}
   model3: {fileID: 5257486991332047612, guid: 3cf76c3dfc7aafd40b003204b8b20bae, type: 3}
   model4: {fileID: 5257486991332047612, guid: 25eef24a0481004418aed81a4f5386dc, type: 3}
-  playerMovement: {fileID: 5448288781658203703}
-  playerManager: {fileID: 0}
   manager: {fileID: 0}
   canvas: {fileID: 0}
 --- !u!1 &8656893950539421664
@@ -1445,7 +1457,5 @@ MonoBehaviour:
   model2: {fileID: 5257486991332047612, guid: 44712344b2c81c249afa60f5398bd4a1, type: 3}
   model3: {fileID: 5257486991332047612, guid: 3cf76c3dfc7aafd40b003204b8b20bae, type: 3}
   model4: {fileID: 5257486991332047612, guid: 25eef24a0481004418aed81a4f5386dc, type: 3}
-  playerMovement: {fileID: 5448288781658203703}
-  playerManager: {fileID: 0}
   manager: {fileID: 0}
   canvas: {fileID: 0}

@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlayerScriptMinigame3 : MonoBehaviour
 {
-    public GameObject heart1;
-    public GameObject heart2;
+    //public GameObject heart1;
+    //public GameObject heart2;
 
     public int health = 2;
 
@@ -31,8 +31,6 @@ public class PlayerScriptMinigame3 : MonoBehaviour
 
     void Update()
     {
-
-
         if (health <= 0)
         {
             GetPlayerOffScreen();
@@ -43,5 +41,14 @@ public class PlayerScriptMinigame3 : MonoBehaviour
     {
         isAlive = false;
         transform.position = deathPosition.position;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("FireBall"))
+        {
+            health--;
+            Destroy(other.gameObject);
+        }
     }
 }
