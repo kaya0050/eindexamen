@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class pickupminigamemanager : MonoBehaviour
 {
     manager manager;
-    public int Timer = 9000;
+    public MinigameTimer MinigameTimer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,8 +19,8 @@ public class pickupminigamemanager : MonoBehaviour
     void Update()
     {
         //een functie om te wisselen naar score scherm
-        Timer--;
-        if (Timer < 0)
+
+        if (MinigameTimer.timer < 0)
         {
             SceneManager.LoadScene("scorescene");
 
