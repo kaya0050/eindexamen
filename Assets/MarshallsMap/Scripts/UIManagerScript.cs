@@ -7,6 +7,8 @@ public class UIManagerScript : MonoBehaviour
     public float timer = 180f;
     public float startTimer = 3f;
 
+    public int alivePlayers;
+
     public FireBallSpawner fireBallSpawner;
 
     public TextMeshProUGUI timerText;
@@ -35,8 +37,6 @@ public class UIManagerScript : MonoBehaviour
 
         PlayerScriptMinigame3[] players = FindObjectsByType<PlayerScriptMinigame3>(FindObjectsSortMode.None);
 
-        int alivePlayers = 0;
-
         foreach (PlayerScriptMinigame3 player in players)
         {
             if (player.isAlive)
@@ -47,7 +47,7 @@ public class UIManagerScript : MonoBehaviour
 
         if (alivePlayers <= 1)
         {
-            //SceneManager.LoadScene("scorescene");
+            SceneManager.LoadScene("scorescene");
         }
 
         int minutes = Mathf.FloorToInt(timer / 60);
