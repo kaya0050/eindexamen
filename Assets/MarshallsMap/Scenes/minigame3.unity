@@ -317,6 +317,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: treestump
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9823655d3caaac04dae8403c56a9909b, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1205,7 +1209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e364f90936947941a894071d0c6c603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireBall: {fileID: 692683074599368449, guid: 8a770748cf3d0a948ac54fbbb59720ac, type: 3}
+  fireBall: {fileID: 9125061504033067153, guid: 148bbaba90a0be449a2bb4bfb32ff653, type: 3}
   fireBallSpawnPoint:
   - {fileID: 1131653394}
   - {fileID: 1475210718}
@@ -1245,7 +1249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcc1329fe587b994997919a786a72f22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 180
+  timer: 120
   startTimer: 3
   fireBallSpawner: {fileID: 462584541}
   timerText: {fileID: 874246139}
@@ -5039,6 +5043,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9823655d3caaac04dae8403c56a9909b, type: 3}
       propertyPath: m_Name
       value: treestump (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9823655d3caaac04dae8403c56a9909b, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
