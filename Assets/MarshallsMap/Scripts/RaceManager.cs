@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RaceMovement : MonoBehaviour
+public class RaceManager : MonoBehaviour
 {
     void Start()
     {

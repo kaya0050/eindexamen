@@ -47,11 +47,6 @@ public class UIManagerScript : MonoBehaviour
             }
         }
 
-        if (alivePlayers <= 1)
-        {
-            SceneManager.LoadScene("scorescene");
-        }
-
         int minutes = Mathf.FloorToInt(timer / 60);
         int seconds = Mathf.FloorToInt(timer % 60);
 

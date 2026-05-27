@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerScriptMinigame3 : MonoBehaviour
 {
@@ -75,6 +76,7 @@ public class PlayerScriptMinigame3 : MonoBehaviour
                     playerManager.points += earnedScore;
                     health = -1;
                     giveScore = false;
+                    SceneManager.LoadScene("scorescene");
                     break;
             }
         }
