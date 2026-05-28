@@ -16,26 +16,31 @@ public class Menu : MonoBehaviour
     Stats score = new Stats();
 
     string savePath;
-
+    public GameObject statsScreen;
+    public GameObject highscoreScreen;
     public TextMeshProUGUI points;
     public TextMeshProUGUI playerStats;
 
     public TMP_InputField nameInput;
     manager manager;
     string textStats;
+    playermanager playma;
     void Start()
     {
         manager = GameObject.FindAnyObjectByType<manager>();
         savePath = Path.Combine(Application.persistentDataPath, "save.json");
-
+        playma = CheckhighScore();
         LoadStats();
 
         nameInput.text = score.playerName;
 
         Updatetext();
     }
-
-    public void SaveStats()
+    public void Statistics()
+    {
+        statsScreen.SetActive(!statsScreen.active);
+    }
+    public playermanager CheckhighScore()
     {
         playermanager bestPlayer = null;
 
@@ -51,19 +56,27 @@ public class Menu : MonoBehaviour
 
         if (bestPlayer.points > score.points)
         {
-            score.playerName = nameInput.text;
-            score.points = bestPlayer.points;
-
-            string json = JsonUtility.ToJson(score, true);
-            File.WriteAllText(savePath, json);
-
-            Debug.Log("Saved to: " + savePath);
+            highscoreScreen.SetActive(true);
+            Debug.Log("new highscore.");
+            return bestPlayer;
         }
         else
         {
-            Debug.Log("No new highscore.");
+            Debug.Log("no new highscore.");
+            return bestPlayer;
         }
         
+        
+    }
+    public void SaveHighscore()
+    {
+        score.playerName = nameInput.text;
+        score.points = playma.points;
+
+        string json = JsonUtility.ToJson(score, true);
+        File.WriteAllText(savePath, json);
+
+        Debug.Log("Saved to: " + savePath);
         LoadStats();
 
         Updatetext();
