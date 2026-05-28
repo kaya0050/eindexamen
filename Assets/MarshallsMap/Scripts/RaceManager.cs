@@ -37,7 +37,7 @@ public class RaceManager : MonoBehaviour
         {
             scoreGiven = true;
             GiveScore();
-            SceneManager.LoadScene("scorescene");
+            //SceneManager.LoadScene("scorescene");
         }
     }
 
