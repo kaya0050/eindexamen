@@ -74,9 +74,9 @@ public class Menu : MonoBehaviour
         for (int i = 0; i < manager.players.Count; i++)
         {
             playermanager mana = manager.players[i].GetComponent<playermanager>();
-            textStats = "player:" + mana.index.ToString() +"\n" 
-                + "wins:" + mana.winTimes + "\n" 
-                + "points:" + mana.points;
+            textStats += "player: " + mana.index + "\n"
+              + "wins: " + mana.winTimes + "\n"
+              + "points: " + mana.points + "\n\n";
         }
         playerStats.text = textStats;
         
