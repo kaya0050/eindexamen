@@ -15,7 +15,7 @@ public class PlayerScriptMinigame3 : MonoBehaviour
     public Transform deathPosition;
 
     private UIManagerScript uiManager;
-    private playermanager playerManager;
+    public playermanager playerManager;
 
     private Rigidbody rb;
 
@@ -27,7 +27,6 @@ public class PlayerScriptMinigame3 : MonoBehaviour
     void Update()
     {
         uiManager = FindAnyObjectByType<UIManagerScript>();
-        playerManager = FindAnyObjectByType<playermanager>();
 
         rb = GetComponent<Rigidbody>();
 

@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RaceManager : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class RaceManager : MonoBehaviour
 
         UpdateUI();
         HandleStartTimer();
+        HandleGameTimer();
     }
 
     void HandleStartTimer()
@@ -35,6 +37,19 @@ public class RaceManager : MonoBehaviour
         {
             startTimerText.gameObject.SetActive(false);
             gameStarted = true;
+        }
+    }
+
+    void HandleGameTimer()
+    {
+        if (gameStarted && timer > 0)
+        {
+            timer -= Time.deltaTime;
+
+            if (timer <= 0)
+            {
+                SceneManager.LoadScene("scorescene");
+            }
         }
     }
 
