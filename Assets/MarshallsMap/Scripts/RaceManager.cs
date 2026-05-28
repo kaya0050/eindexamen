@@ -57,7 +57,7 @@ public class RaceManager : MonoBehaviour
             RaceMovement[] players = FindObjectsByType<RaceMovement>(FindObjectsSortMode.None);
             foreach (RaceMovement p in players)
             {
-                p.isRacing = true;
+                //p.isRacing = true;
             }
         }
     }
@@ -85,7 +85,7 @@ public class RaceManager : MonoBehaviour
 
         foreach (var p in players)
         {
-            if (p.isRacing) return false;
+            //if (p.isRacing) return false;
         }
 
         return true;
@@ -121,10 +121,10 @@ public class RaceManager : MonoBehaviour
                 default: points = 10; break;
             }
 
-            if (finishOrder[i].isPlayer)
-            {
-                playerManager.points += points;
-            }
+            //if (finishOrder[i].isPlayer)
+            //{
+            //    playerManager.points += points;
+            //}
         }
     }
 }
