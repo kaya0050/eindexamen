@@ -18,17 +18,24 @@ public class RaceManager : MonoBehaviour
 
     void Update()
     {
-        if (startTimer <= 0)
-        {
-            gameStarted = true;
-        }
-
         if (gameStarted)
         {
             timer -= Time.deltaTime;
         }
 
         UpdateUI();
+        HandleStartTimer();
+    }
+
+    void HandleStartTimer()
+    {
+        startTimer -= Time.deltaTime;
+
+        if (startTimer <= 0)
+        {
+            startTimerText.gameObject.SetActive(false);
+            gameStarted = true;
+        }
     }
 
     void UpdateUI()
