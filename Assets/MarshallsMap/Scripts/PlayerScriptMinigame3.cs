@@ -25,7 +25,10 @@ public class PlayerScriptMinigame3 : MonoBehaviour
         playerManager = FindAnyObjectByType<playermanager>();
 
         rb = GetComponent<Rigidbody>();
+    }
 
+    void Update()
+    {
         GameObject dp = GameObject.Find("DeathPosition");
 
         if (dp != null)
@@ -36,10 +39,7 @@ public class PlayerScriptMinigame3 : MonoBehaviour
         {
             Debug.LogError("DeathPosition niet gevonden!");
         }
-    }
 
-    void Update()
-    {
         // speler gaat dood
         if (health <= 0 && !deathHandled)
         {
