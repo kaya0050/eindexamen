@@ -82,13 +82,14 @@ public class PlayerScriptMinigame3 : MonoBehaviour
                     playerManager.points += earnedScore;
                     health = -1;
                     giveScore = false;
-                    laatsteSpeler = true;
+                    
                     break;
                 case 1:
                     earnedScore = 150;
                     playerManager.points += earnedScore;
                     health = -1;
                     giveScore = false;
+                    laatsteSpeler = true;
                     break;
             }
         }

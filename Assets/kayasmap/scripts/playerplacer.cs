@@ -18,6 +18,7 @@ public class playerplacer : MonoBehaviour
         if (basedOnPoints)
         {
             players = players.OrderByDescending(p => p.GetComponent<playermanager>().points).ToList();
+            players[0].GetComponent<playermanager>().winTimes += 1;
         }
         else
         {

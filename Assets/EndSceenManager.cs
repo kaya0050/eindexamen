@@ -18,11 +18,11 @@ public class Menu : MonoBehaviour
     string savePath;
 
     public TextMeshProUGUI points;
-
+    public TextMeshProUGUI playerStats;
 
     public TMP_InputField nameInput;
     manager manager;
-
+    string textStats;
     void Start()
     {
         manager = GameObject.FindAnyObjectByType<manager>();
@@ -71,6 +71,15 @@ public class Menu : MonoBehaviour
     public void Updatetext()
     {
         points.text = "highscore: " + score.playerName + " points: " + score.points;
+        for (int i = 0; i < manager.players.Count; i++)
+        {
+            playermanager mana = manager.players[i].GetComponent<playermanager>();
+            textStats = "player:" + mana.index.ToString() +"\n" 
+                + "wins:" + mana.winTimes + "\n" 
+                + "points:" + mana.points;
+        }
+        playerStats.text = textStats;
+        
     }
     public void LoadStats()
     {

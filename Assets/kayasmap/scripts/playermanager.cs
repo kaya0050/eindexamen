@@ -16,6 +16,7 @@ public class playermanager : MonoBehaviour
     public InputSystemUIInputModule uiModule;
 
     public int points = 0;
+    public int winTimes;
     manager manager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
