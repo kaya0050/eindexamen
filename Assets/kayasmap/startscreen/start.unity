@@ -593,12 +593,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d88a36ff29ead49a327f28a09ea597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model1: {fileID: 5257486991332047612, guid: 5c1c727ad9893b845902e0458ac41dea, type: 3}
+  model1: {fileID: 704922660681551781, guid: 92d31defb6d2bcb4f93b933708f37a60, type: 3}
   model2: {fileID: 5257486991332047612, guid: 44712344b2c81c249afa60f5398bd4a1, type: 3}
   model3: {fileID: 5257486991332047612, guid: 3cf76c3dfc7aafd40b003204b8b20bae, type: 3}
   model4: {fileID: 5257486991332047612, guid: 25eef24a0481004418aed81a4f5386dc, type: 3}
-  playerMovement: {fileID: 0}
-  playerManager: {fileID: 0}
   manager: {fileID: 1053491669}
   canvas: {fileID: 1213105050}
 --- !u!114 &647866393
@@ -747,12 +745,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d88a36ff29ead49a327f28a09ea597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model1: {fileID: 5257486991332047612, guid: 5c1c727ad9893b845902e0458ac41dea, type: 3}
+  model1: {fileID: 704922660681551781, guid: 92d31defb6d2bcb4f93b933708f37a60, type: 3}
   model2: {fileID: 5257486991332047612, guid: 44712344b2c81c249afa60f5398bd4a1, type: 3}
   model3: {fileID: 5257486991332047612, guid: 3cf76c3dfc7aafd40b003204b8b20bae, type: 3}
   model4: {fileID: 5257486991332047612, guid: 25eef24a0481004418aed81a4f5386dc, type: 3}
-  playerMovement: {fileID: 0}
-  playerManager: {fileID: 0}
   manager: {fileID: 1053491669}
   canvas: {fileID: 1213105050}
 --- !u!114 &744203709
@@ -1667,12 +1663,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d88a36ff29ead49a327f28a09ea597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model1: {fileID: 5257486991332047612, guid: 5c1c727ad9893b845902e0458ac41dea, type: 3}
+  model1: {fileID: 704922660681551781, guid: 92d31defb6d2bcb4f93b933708f37a60, type: 3}
   model2: {fileID: 5257486991332047612, guid: 44712344b2c81c249afa60f5398bd4a1, type: 3}
   model3: {fileID: 5257486991332047612, guid: 3cf76c3dfc7aafd40b003204b8b20bae, type: 3}
   model4: {fileID: 5257486991332047612, guid: 25eef24a0481004418aed81a4f5386dc, type: 3}
-  playerMovement: {fileID: 0}
-  playerManager: {fileID: 0}
   manager: {fileID: 1053491669}
   canvas: {fileID: 1213105050}
 --- !u!114 &1732273766
@@ -1850,12 +1844,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d88a36ff29ead49a327f28a09ea597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model1: {fileID: 5257486991332047612, guid: 5c1c727ad9893b845902e0458ac41dea, type: 3}
+  model1: {fileID: 704922660681551781, guid: 92d31defb6d2bcb4f93b933708f37a60, type: 3}
   model2: {fileID: 5257486991332047612, guid: 44712344b2c81c249afa60f5398bd4a1, type: 3}
   model3: {fileID: 5257486991332047612, guid: 3cf76c3dfc7aafd40b003204b8b20bae, type: 3}
   model4: {fileID: 5257486991332047612, guid: 25eef24a0481004418aed81a4f5386dc, type: 3}
-  playerMovement: {fileID: 0}
-  playerManager: {fileID: 0}
   manager: {fileID: 1053491669}
   canvas: {fileID: 1213105050}
 --- !u!114 &1874996382
