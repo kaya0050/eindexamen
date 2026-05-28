@@ -18,6 +18,7 @@ public class PlayerScriptMinigame3 : MonoBehaviour
     public playermanager playerManager;
 
     private Rigidbody rb;
+    bool endScene = false;
 
     void Start()
     {
@@ -52,8 +53,9 @@ public class PlayerScriptMinigame3 : MonoBehaviour
         {
             endGameTimer -= Time.deltaTime;
 
-            if (endGameTimer <= 0)
+            if (endGameTimer <= 0 && !endScene)
             {
+                endScene = true;
                 SceneManager.LoadScene("scorescene");
             }
         }

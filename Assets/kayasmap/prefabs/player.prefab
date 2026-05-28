@@ -885,6 +885,7 @@ MonoBehaviour:
   playerInput: {fileID: 5943785570370431799}
   uiModule: {fileID: 0}
   points: 0
+  winTimes: 0
 --- !u!114 &5448288781658203703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1012,11 +1013,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f1b82ac4185164691580e74f442b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heart1: {fileID: 0}
-  heart2: {fileID: 0}
   health: 2
+  earnedScore: 0
   isAlive: 1
+  endGameTimer: 3
   deathPosition: {fileID: 0}
+  playerManager: {fileID: 1220822997529059466}
 --- !u!1 &7762610984891478017
 GameObject:
   m_ObjectHideFlags: 0
