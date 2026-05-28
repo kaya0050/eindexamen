@@ -83,11 +83,11 @@ public class Menu : MonoBehaviour
     }
     public void Updatetext()
     {
-        points.text = "highscore: " + score.playerName + " points: " + score.points;
+        points.text = "old highscore: " + score.playerName + " points: " + score.points;
         for (int i = 0; i < manager.players.Count; i++)
         {
             playermanager mana = manager.players[i].GetComponent<playermanager>();
-            textStats += "player: " + mana.index + "\n"
+            textStats += "player: " + (mana.index + 1) + "\n"
               + "wins: " + mana.winTimes + "\n"
               + "points: " + mana.points + "\n\n";
         }
