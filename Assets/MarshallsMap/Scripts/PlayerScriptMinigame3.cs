@@ -21,14 +21,16 @@ public class PlayerScriptMinigame3 : MonoBehaviour
 
     void Start()
     {
-        uiManager = FindAnyObjectByType<UIManagerScript>();
-        playerManager = FindAnyObjectByType<playermanager>();
 
-        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
+        uiManager = FindAnyObjectByType<UIManagerScript>();
+        playerManager = FindAnyObjectByType<playermanager>();
+
+        rb = GetComponent<Rigidbody>();
+
         GameObject dp = GameObject.Find("DeathPosition");
 
         if (dp != null)
