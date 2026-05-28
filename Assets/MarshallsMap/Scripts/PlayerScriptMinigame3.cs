@@ -7,105 +7,112 @@ public class PlayerScriptMinigame3 : MonoBehaviour
     public int earnedScore;
 
     public bool isAlive = true;
-    public bool giveScore = true;
-    public bool laatsteSpeler = false;
+    private bool deathHandled = false;
 
     public float endGameTimer = 3f;
+    private bool laatsteSpeler = false;
 
     public Transform deathPosition;
 
-    public UIManagerScript uiManager;
-    public playermanager playerManager;
+    private UIManagerScript uiManager;
+    private playermanager playerManager;
+
+    private Rigidbody rb;
 
     void Start()
     {
-        playerManager = GameObject.FindAnyObjectByType<playermanager>();
+        uiManager = FindAnyObjectByType<UIManagerScript>();
+        playerManager = FindAnyObjectByType<playermanager>();
 
-        health = 2;
+        rb = GetComponent<Rigidbody>();
+
+        GameObject dp = GameObject.Find("DeathPosition");
+
+        if (dp != null)
+        {
+            deathPosition = dp.transform;
+        }
+        else
+        {
+            Debug.LogError("DeathPosition niet gevonden!");
+        }
     }
 
     void Update()
     {
-        uiManager = GameObject.FindAnyObjectByType<UIManagerScript>();
-
-        if (deathPosition == null)
+        // speler gaat dood
+        if (health <= 0 && !deathHandled)
         {
-            GameObject dp = GameObject.Find("DeathPosition");
-
-            if (dp != null)
-            {
-                deathPosition = dp.transform;
-            }
-            else
-            {
-                Debug.LogError("DeathPosition niet gevonden in de scene!");
-            }
+            Die();
         }
 
-        if (health == 0 && isAlive)
-        {
-            CheckEarnedScore();
-            GetPlayerOffScreen();
-        }
-
+        // timer waarin je de winnaar ziet
         if (laatsteSpeler)
         {
             endGameTimer -= Time.deltaTime;
-        }
 
-        if (endGameTimer <= 0)
-        {
-            SceneManager.LoadScene("scorescene");
-        }
-    }
-
-    public void CheckEarnedScore()
-    {
-        if (giveScore)
-        {
-            switch (uiManager.alivePlayers)
+            if (endGameTimer <= 0)
             {
-                case 4:
-                    earnedScore = 0;
-                    playerManager.points += earnedScore;
-                    health = -1;
-                    giveScore = false;
-                    break;
-                case 3:
-                    earnedScore = 50;
-                    playerManager.points += earnedScore;
-                    health = -1;
-                    giveScore = false;
-                    break;
-                case 2:
-                    earnedScore = 100;
-                    playerManager.points += earnedScore;
-                    health = -1;
-                    giveScore = false;
-                    
-                    break;
-                case 1:
-                    earnedScore = 150;
-                    playerManager.points += earnedScore;
-                    health = -1;
-                    giveScore = false;
-                    laatsteSpeler = true;
-                    break;
+                SceneManager.LoadScene("scorescene");
             }
         }
     }
 
-    public void GetPlayerOffScreen()
+    void Die()
     {
+        deathHandled = true;
         isAlive = false;
+
+        GiveScore();
+
+        GetPlayerOffScreen();
+    }
+
+    void GiveScore()
+    {
+        switch (uiManager.alivePlayers)
+        {
+            case 4:
+                earnedScore = 0;
+                break;
+
+            case 3:
+                earnedScore = 50;
+                break;
+
+            case 2:
+                earnedScore = 100;
+                break;
+
+            case 1:
+                earnedScore = 150;
+                laatsteSpeler = true;
+                break;
+        }
+
+        playerManager.points += earnedScore;
+    }
+
+    void GetPlayerOffScreen()
+    {
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.isKinematic = true;
+        }
+
         transform.position = deathPosition.position;
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!isAlive) return;
+
         if (other.CompareTag("FireBall"))
         {
             health--;
+
             Destroy(other.gameObject);
         }
     }

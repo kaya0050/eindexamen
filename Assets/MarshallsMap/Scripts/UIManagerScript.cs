@@ -16,15 +16,28 @@ public class UIManagerScript : MonoBehaviour
 
     void Update()
     {
+        HandleStartTimer();
+
+        HandleGameTimer();
+
+        CountAlivePlayers();
+
+        UpdateUI();
+    }
+
+    void HandleStartTimer()
+    {
         startTimer -= Time.deltaTime;
-        startTimerText.text = startTimer.ToString();
 
         if (startTimer <= 0)
         {
             startTimerText.gameObject.SetActive(false);
             fireBallSpawner.gameStarted = true;
         }
+    }
 
+    void HandleGameTimer()
+    {
         if (fireBallSpawner.gameStarted && timer > 0)
         {
             timer -= Time.deltaTime;
@@ -34,10 +47,14 @@ public class UIManagerScript : MonoBehaviour
                 SceneManager.LoadScene("scorescene");
             }
         }
+    }
 
+    void CountAlivePlayers()
+    {
         alivePlayers = 0;
 
-        PlayerScriptMinigame3[] players = FindObjectsByType<PlayerScriptMinigame3>(FindObjectsSortMode.None);
+        PlayerScriptMinigame3[] players =
+            FindObjectsByType<PlayerScriptMinigame3>(FindObjectsSortMode.None);
 
         foreach (PlayerScriptMinigame3 player in players)
         {
@@ -46,11 +63,19 @@ public class UIManagerScript : MonoBehaviour
                 alivePlayers++;
             }
         }
+    }
 
+    void UpdateUI()
+    {
         int minutes = Mathf.FloorToInt(timer / 60);
         int seconds = Mathf.FloorToInt(timer % 60);
 
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-        startTimerText.text = Mathf.CeilToInt(startTimer).ToString();
+
+        if (startTimer > 0)
+        {
+            startTimerText.text =
+                Mathf.CeilToInt(startTimer).ToString();
+        }
     }
 }
