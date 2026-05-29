@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class EndScreenManager : MonoBehaviour
+public class Menu : MonoBehaviour
 {
     [Serializable]
     public class Stats
@@ -16,32 +16,37 @@ public class EndScreenManager : MonoBehaviour
     Stats score = new Stats();
 
     string savePath;
-
+    public GameObject statsScreen;
+    public GameObject highscoreScreen;
     public TextMeshProUGUI points;
     public TextMeshProUGUI playerStats;
 
     public TMP_InputField nameInput;
-    Manager manager;
+    manager manager;
     string textStats;
+    playermanager playma;
     void Start()
     {
-        manager = GameObject.FindAnyObjectByType<Manager>();
+        manager = GameObject.FindAnyObjectByType<manager>();
         savePath = Path.Combine(Application.persistentDataPath, "save.json");
-
+        playma = CheckhighScore();
         LoadStats();
 
         nameInput.text = score.playerName;
 
-        UpdateText();
+        Updatetext();
     }
-
-    public void SaveStats()
+    public void Statistics()
     {
-        PlayerManager bestPlayer = null;
+        statsScreen.SetActive(!statsScreen.active);
+    }
+    public playermanager CheckhighScore()
+    {
+        playermanager bestPlayer = null;
 
         foreach (var item in manager.players)
         {
-            PlayerManager player = item.GetComponent<PlayerManager>();
+            playermanager player = item.GetComponent<playermanager>();
 
             if (bestPlayer == null || player.points > bestPlayer.points)
             {
@@ -51,30 +56,38 @@ public class EndScreenManager : MonoBehaviour
 
         if (bestPlayer.points > score.points)
         {
-            score.playerName = nameInput.text;
-            score.points = bestPlayer.points;
-
-            string json = JsonUtility.ToJson(score, true);
-            File.WriteAllText(savePath, json);
-
-            Debug.Log("Saved to: " + savePath);
+            highscoreScreen.SetActive(true);
+            Debug.Log("new highscore.");
+            return bestPlayer;
         }
         else
         {
-            Debug.Log("No new highscore.");
+            Debug.Log("no new highscore.");
+            return bestPlayer;
         }
         
+        
+    }
+    public void SaveHighscore()
+    {
+        score.playerName = nameInput.text;
+        score.points = playma.points;
+
+        string json = JsonUtility.ToJson(score, true);
+        File.WriteAllText(savePath, json);
+
+        Debug.Log("Saved to: " + savePath);
         LoadStats();
 
-        UpdateText();
+        Updatetext();
     }
-    public void UpdateText()
+    public void Updatetext()
     {
-        points.text = "highscore: " + score.playerName + " points: " + score.points;
+        points.text = "old highscore: " + score.playerName + " points: " + score.points;
         for (int i = 0; i < manager.players.Count; i++)
         {
-            PlayerManager mana = manager.players[i].GetComponent<PlayerManager>();
-            textStats += "player: " + mana.index + "\n"
+            playermanager mana = manager.players[i].GetComponent<playermanager>();
+            textStats += "player: " + (mana.index + 1) + "\n"
               + "wins: " + mana.winTimes + "\n"
               + "points: " + mana.points + "\n\n";
         }
