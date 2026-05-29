@@ -27,6 +27,7 @@ public class UIManagerScript : MonoBehaviour
 
     void HandleStartTimer()
     {
+        //deze functie zorgt ervoor dat de start timer aftelt, verdwijnt en het spel begint.
         startTimer -= Time.deltaTime;
 
         if (startTimer <= 0)
@@ -38,6 +39,7 @@ public class UIManagerScript : MonoBehaviour
 
     void HandleGameTimer()
     {
+        //deze functie laat de tijd lopen voor de minigame en als de tijd om is eindigd hij de minigame.
         if (fireBallSpawner.gameStarted && timer > 0)
         {
             timer -= Time.deltaTime;
@@ -51,6 +53,7 @@ public class UIManagerScript : MonoBehaviour
 
     void CountAlivePlayers()
     {
+        //deze functie controleert hoeveel spelers er in de minigame zijn zodat een ander script weet hoeveel spelers er in de minigame zit.
         alivePlayers = 0;
 
         PlayerScriptMinigame3[] players =
@@ -67,6 +70,7 @@ public class UIManagerScript : MonoBehaviour
 
     void UpdateUI()
     {
+        //hier wordt de UI geupdate en de timers op de juiste wijze weergegeven
         int minutes = Mathf.FloorToInt(timer / 60);
         int seconds = Mathf.FloorToInt(timer % 60);
 

@@ -20,15 +20,10 @@ public class PlayerScriptMinigame3 : MonoBehaviour
     private Rigidbody rb;
     bool endScene = false;
 
-    void Start()
-    {
-
-    }
-
     void Update()
     {
+        //Haalt references op en checkt belangrijke game states.
         uiManager = FindAnyObjectByType<UIManagerScript>();
-
         rb = GetComponent<Rigidbody>();
 
         GameObject dp = GameObject.Find("DeathPosition");
@@ -42,13 +37,13 @@ public class PlayerScriptMinigame3 : MonoBehaviour
             Debug.LogError("DeathPosition niet gevonden!");
         }
 
-        // speler gaat dood
+        //Checkt of speler dood moet gaan.
         if (health <= 0 && !deathHandled)
         {
             Die();
         }
 
-        // timer waarin je de winnaar ziet
+        //Als speler de laatste overlevende is, start de eindtimer en naar de eindscene.
         if (laatsteSpeler)
         {
             endGameTimer -= Time.deltaTime;
@@ -63,16 +58,17 @@ public class PlayerScriptMinigame3 : MonoBehaviour
 
     void Die()
     {
+        //Zorgt dat death logic maar 1x gebeurt.
         deathHandled = true;
         isAlive = false;
 
         GiveScore();
-
         GetPlayerOffScreen();
     }
 
     void GiveScore()
     {
+        //Bepaalt score op basis van hoeveel spelers nog leven.
         switch (uiManager.alivePlayers)
         {
             case 4:
@@ -88,16 +84,19 @@ public class PlayerScriptMinigame3 : MonoBehaviour
                 break;
 
             case 1:
+                //Laatste speler krijgt bonus en triggert eindgame.
                 earnedScore = 150;
                 laatsteSpeler = true;
                 break;
         }
 
+        //Voeg score toe aan speler.
         playerManager.points += earnedScore;
     }
 
     void GetPlayerOffScreen()
     {
+        //Zet physics uit zodat speler niet meer beweegt.
         if (rb != null)
         {
             rb.linearVelocity = Vector3.zero;
@@ -105,17 +104,19 @@ public class PlayerScriptMinigame3 : MonoBehaviour
             rb.isKinematic = true;
         }
 
+        //Verplaatst speler naar “death position” buiten de map.
         transform.position = deathPosition.position;
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        //Negeer collisions als speler al dood is.
         if (!isAlive) return;
 
+        //Als je geraakt wordt door een fireball, verlies je health.
         if (other.CompareTag("FireBall"))
         {
             health--;
-
             Destroy(other.gameObject);
         }
     }

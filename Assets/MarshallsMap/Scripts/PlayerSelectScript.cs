@@ -10,22 +10,14 @@ public class PlayerSelectScript : MonoBehaviour
     {
         public GameObject playerPanel;
 
-        // Preview modellen in menu
-        public GameObject[] characterModels;
-        public GameObject[] characterModelsTrue;
-        [HideInInspector]
-        public int currentCharacter;
+        public GameObject[] characterModels;      //UI previews van de characters.
+        public GameObject[] characterModelsTrue;  //prefabs van de characters.
 
-        [HideInInspector]
-        public bool ready;
-
-        // Het echte gekozen prefab
-        [HideInInspector]
         public GameObject selectedCharacter;
-
-        // Geinstantieerde speler
-        [HideInInspector]
         public GameObject spawnedCharacter;
+
+        public int currentCharacter;
+        public bool ready;
 
         public TextMeshProUGUI readyText;
         public TextMeshProUGUI joinText;
@@ -44,22 +36,18 @@ public class PlayerSelectScript : MonoBehaviour
 
     void Update()
     {
+        //Checkt elke frame hoeveel spelers actief zijn en of iedereen ready is.
         currentPlayerAmount = manager.players.Count;
-        bool allReady = false;
 
-        if (currentPlayerAmount > 1)
+        bool allReady = currentPlayerAmount > 1;
+
+        for (int i = 0; i < currentPlayerAmount; i++)
         {
-            allReady = true;
-
-            for (int i = 0; i < currentPlayerAmount; i++)
-            {
-                if (!players[i].ready)
-                {
-                    allReady = false;
-                }
-            }
+            if (!players[i].ready)
+                allReady = false;
         }
 
+        //Update de UI per speler (join/ready status + character preview).
         for (int i = 0; i < players.Length; i++)
         {
             bool active = i < currentPlayerAmount;
@@ -68,73 +56,63 @@ public class PlayerSelectScript : MonoBehaviour
             players[i].readyButton.gameObject.SetActive(active);
 
             if (active)
-            {
                 ShowCharacter(i);
-            }
             else
-            {
                 HideAllCharacters(i);
-            }
         }
 
+        //Start knop wordt alleen actief als iedereen ready is.
         startButton.SetActive(allReady);
     }
 
     public void NextCharacter(int playerIndex)
     {
-        if (players[playerIndex].ready)
-            return;
+        //Gaat naar het volgende character in de lijst.
+        if (players[playerIndex].ready) return;
 
         players[playerIndex].currentCharacter++;
 
         if (players[playerIndex].currentCharacter >= players[playerIndex].characterModels.Length)
-        {
             players[playerIndex].currentCharacter = 0;
-        }
 
         ShowCharacter(playerIndex);
     }
 
     public void PreviousCharacter(int playerIndex)
     {
-        if (players[playerIndex].ready)
-            return;
+        //Gaat naar het vorige character in de lijst.
+        if (players[playerIndex].ready) return;
 
         players[playerIndex].currentCharacter--;
 
         if (players[playerIndex].currentCharacter < 0)
-        {
-            players[playerIndex].currentCharacter =
-                players[playerIndex].characterModels.Length - 1;
-        }
+            players[playerIndex].currentCharacter = players[playerIndex].characterModels.Length - 1;
 
         ShowCharacter(playerIndex);
     }
 
     public void ToggleReady(int playerIndex)
     {
+        //Zet speler op ready of not ready en spawnt of verwijdert de character.
         PlayerSlot player = players[playerIndex];
 
         player.ready = !player.ready;
 
         if (player.ready)
         {
+            //Speler heeft keuze bevestigd.
             player.readyText.text = "Ready";
 
             player.nextButton.gameObject.SetActive(false);
             player.previousButton.gameObject.SetActive(false);
 
-            // gekozen prefab opslaan
             player.selectedCharacter =
                 player.characterModelsTrue[player.currentCharacter];
 
-            // oude verwijderen indien nodig
             if (player.spawnedCharacter != null)
-            {
                 Destroy(player.spawnedCharacter);
-            }
 
-            // speler model spawnen
+            //Spawn de gekozen character in de game.
             Instantiate(
                 player.selectedCharacter,
                 manager.players[playerIndex].transform
@@ -142,21 +120,20 @@ public class PlayerSelectScript : MonoBehaviour
         }
         else
         {
+            //Speler gaat terug naar character select.
             player.readyText.text = "Not Ready";
 
             player.nextButton.gameObject.SetActive(true);
             player.previousButton.gameObject.SetActive(true);
 
-            // spawned model verwijderen
             if (player.spawnedCharacter != null)
-            {
                 Destroy(player.spawnedCharacter);
-            }
         }
     }
 
     void ShowCharacter(int playerIndex)
     {
+        //Laat alleen het geselecteerde character zien in de UI.
         HideAllCharacters(playerIndex);
 
         players[playerIndex]
@@ -166,14 +143,14 @@ public class PlayerSelectScript : MonoBehaviour
 
     void HideAllCharacters(int playerIndex)
     {
+        //Verbergt alle character previews van deze speler.
         for (int i = 0; i < players[playerIndex].characterModels.Length; i++)
-        {
             players[playerIndex].characterModels[i].SetActive(false);
-        }
     }
 
     public void StartGame()
     {
+        //Start de game scene zodra iedereen ready is.
         SceneManager.LoadScene("test");
     }
 }
