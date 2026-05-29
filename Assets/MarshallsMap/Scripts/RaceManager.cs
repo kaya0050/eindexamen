@@ -37,7 +37,7 @@ public class RaceManager : MonoBehaviour
         {
             scoreGiven = true;
             GiveScore();
-            //SceneManager.LoadScene("scorescene");
+            SceneManager.LoadScene("scorescene");
         }
     }
 
@@ -57,7 +57,7 @@ public class RaceManager : MonoBehaviour
             RaceMovement[] players = FindObjectsByType<RaceMovement>(FindObjectsSortMode.None);
             foreach (RaceMovement p in players)
             {
-                //p.isRacing = true;
+                p.isRacing = true;
             }
         }
     }
@@ -85,7 +85,7 @@ public class RaceManager : MonoBehaviour
 
         foreach (var p in players)
         {
-            //if (p.isRacing) return false;
+            if (p.isRacing) return false;
         }
 
         return true;
@@ -109,22 +109,22 @@ public class RaceManager : MonoBehaviour
 
     void GiveScore()
     {
-        for (int i = 0; i < finishOrder.Count; i++)
-        {
-            int points = 0;
+        //for (int i = 0; i < finishOrder.Count; i++)
+        //{
+        //    int points = 0;
 
-            switch (i)
-            {
-                case 0: points = 150; break;
-                case 1: points = 100; break;
-                case 2: points = 50; break;
-                default: points = 10; break;
-            }
+        //    switch (i)
+        //    {
+        //        case 0: points = 150; break;
+        //        case 1: points = 100; break;
+        //        case 2: points = 50; break;
+        //        default: points = 10; break;
+        //    }
 
-            //if (finishOrder[i].isPlayer)
-            //{
-            //    playerManager.points += points;
-            //}
-        }
+        //    if (finishOrder[i].isPlayer)
+        //    {
+        //        playerManager.points += points;
+        //    }
+        //}
     }
 }
