@@ -1,16 +1,16 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class pickupminigamemanager : MonoBehaviour
+public class PickupMinigameManager : MonoBehaviour
 {
-    manager manager;
-    public MinigameTimer MinigameTimer;
+    Manager manager;
+    public MinigameTimer minigameTimer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (GameObject.Find("manager").GetComponent<manager>() != null)
+        if (GameObject.Find("manager").GetComponent<Manager>() != null)
         {
-            manager = GameObject.Find("manager").GetComponent<manager>();
+            manager = GameObject.Find("manager").GetComponent<Manager>();
             manager.inMinigame = true;
         }
     }
@@ -20,7 +20,7 @@ public class pickupminigamemanager : MonoBehaviour
     {
         //een functie om te wisselen naar score scherm
 
-        if (MinigameTimer.timer < 0)
+        if (minigameTimer.timer < 0)
         {
             SceneManager.LoadScene("scorescene");
 

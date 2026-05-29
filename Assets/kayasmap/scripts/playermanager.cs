@@ -6,7 +6,7 @@ using UnityEngine.InputSystem.UI;
 using UnityEngine.UI;
 
 
-public class playermanager : MonoBehaviour
+public class PlayerManager : MonoBehaviour
 {
     public int index = 0;
     public EventSystem eventSystem;
@@ -17,7 +17,7 @@ public class playermanager : MonoBehaviour
 
     public int points = 0;
     public int winTimes;
-    manager manager;
+    Manager manager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,11 +35,5 @@ public class playermanager : MonoBehaviour
         manager.players.Add(gameObject);
         playerInput.uiInputModule = uiModule;
         eventSystem.SetSelectedGameObject(buttonsInCanvas[0].gameObject);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

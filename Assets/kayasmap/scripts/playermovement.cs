@@ -13,16 +13,9 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 moveInput;
     float yVelocity;
-    public AudioSource AudioSource;
+    public AudioSource audioSource;
     public AudioClip jumpSound;
 
-
-    void Start()
-    {
-
-
-
-    }
     public void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
@@ -31,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (characterController.isGrounded)
         {
-            AudioSource.PlayOneShot(jumpSound, 1);
+            audioSource.PlayOneShot(jumpSound, 1);
             yVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
     }

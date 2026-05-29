@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class manager : MonoBehaviour
+public class Manager : MonoBehaviour
 {
     public bool inMinigame = false;
     public List<GameObject> cards = new List<GameObject>();

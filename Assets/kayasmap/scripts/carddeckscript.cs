@@ -2,14 +2,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class carddeckscript : MonoBehaviour
+public class CardDeckScript : MonoBehaviour
 {
-    public manager manager;
-    public List<Transform> cardspositions = new List<Transform>();
+    public Manager manager;
+    public List<Transform> cardsPositions = new List<Transform>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        manager = GameObject.Find("manager").GetComponent<manager>();
+        manager = GameObject.Find("manager").GetComponent<Manager>();
     }
 
     // Update is called once per frame
@@ -24,20 +24,20 @@ public class carddeckscript : MonoBehaviour
     void DealCards()
     {
         //shufflecards
-        for (int i = 0; i < cardspositions.Count; i++)
+        for (int i = 0; i < cardsPositions.Count; i++)
         {
-            int randomIndex = Random.Range(i, cardspositions.Count);
+            int randomIndex = Random.Range(i, cardsPositions.Count);
 
-            Transform temp = cardspositions[i];
-            cardspositions[i] = cardspositions[randomIndex];
-            cardspositions[randomIndex] = temp;
+            Transform temp = cardsPositions[i];
+            cardsPositions[i] = cardsPositions[randomIndex];
+            cardsPositions[randomIndex] = temp;
         }
 
         for (int i = 0; i < manager.cards.Count; i++)
         {
-            manager.cards[i].transform.position = cardspositions[i].position;
+            manager.cards[i].transform.position = cardsPositions[i].position;
             cardscript cardscript = manager.cards[i].GetComponent<cardscript>();
-            cardscript.startPos = cardspositions[i].position;
+            cardscript.startPos = cardsPositions[i].position;
         }
     }
 }

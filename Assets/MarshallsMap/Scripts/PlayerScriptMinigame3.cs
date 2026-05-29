@@ -15,7 +15,7 @@ public class PlayerScriptMinigame3 : MonoBehaviour
     public Transform deathPosition;
 
     private UIManagerScript uiManager;
-    public playermanager playerManager;
+    public PlayerManager playerManager;
 
     private Rigidbody rb;
     bool endScene = false;

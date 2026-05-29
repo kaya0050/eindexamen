@@ -30,7 +30,7 @@ public class PlayerSelectScript : MonoBehaviour
     public PlayerSlot[] players;
 
     public int currentPlayerAmount;
-    public manager manager;
+    public Manager manager;
 
     public GameObject startButton;
 

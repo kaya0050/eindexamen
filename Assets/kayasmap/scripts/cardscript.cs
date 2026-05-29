@@ -3,31 +3,21 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class cardscript : MonoBehaviour
+public class CardScript : MonoBehaviour
 {
-    public carddeckscript carddeckscript;
+    public CardDeckScript cardDeckScript;
     public bool isPulled = false;
-    public string minigameescene;
+    public string minigameScene;
     public Vector3 startPos;
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void UseCard()
     {
-        carddeckscript.manager.cards.Remove(gameObject);
+        cardDeckScript.manager.cards.Remove(gameObject);
         Destroy(gameObject);
-        carddeckscript.manager.inMinigame = true;
-        SceneManager.LoadScene(minigameescene);
+        cardDeckScript.manager.inMinigame = true;
+        SceneManager.LoadScene(minigameScene);
     }
-    public void HighlightCard()
+    public void HighLightCard()
     {
         transform.position = startPos + new Vector3(0, math.sin(Time.time * 5) * 0.02f, 0);
     }

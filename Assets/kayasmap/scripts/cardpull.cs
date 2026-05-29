@@ -7,10 +7,10 @@ public class CardPull : MonoBehaviour
 {
 
     //public int playerIndex; 
-    public manager manager;
+    public Manager manager;
     public GameObject currentPlayer;
 
-    public List<cardscript> cards;
+    public List<CardScript> cards;
 
     public PlayerInput playerInput;
 

@@ -8,12 +8,12 @@ public class MainMenuScript : MonoBehaviour
     public GameObject optionMenu;
     public GameObject statsMenu;
     public GameObject playerSelectMenu;
-    public TextMeshProUGUI playercount;
-    public manager manager;
+    public TextMeshProUGUI playerCount;
+    public Manager manager;
 
     public void Update()
     {
-        playercount.text = manager.players.Count.ToString();
+        playerCount.text = manager.players.Count.ToString();
     }
     public void OpenOptionsMenu()
     {

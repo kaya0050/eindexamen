@@ -1,30 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class pickupspawner : MonoBehaviour
+public class PickupSpawner : MonoBehaviour
 {
-    public List<GameObject> pickup_drops;
+    public List<GameObject> pickupDrops;
 
     public int timer;
     public BoxCollider spawnArea;
     public int height = 5;
-    public AudioSource AudioSource;
-    public AudioClip popsound;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
-
-
-
+    public AudioSource audioSource;
+    public AudioClip popSound;
     private void FixedUpdate()
     {
         timer--;
@@ -38,14 +23,14 @@ public class pickupspawner : MonoBehaviour
 
     void SpawnPickup()
     {
-        AudioSource.PlayOneShot(popsound,1);
+        audioSource.PlayOneShot(popSound,1);
         Bounds bounds = spawnArea.bounds;
 
         float randomX = Random.Range(bounds.min.x, bounds.max.x);
         float randomZ = Random.Range(bounds.min.z, bounds.max.z);
 
         Vector3 randomPosition = new Vector3(randomX, height, randomZ);
-        Instantiate(pickup_drops[Random.Range(0,pickup_drops.Count) ], randomPosition, Quaternion.identity);
+        Instantiate(pickupDrops[Random.Range(0,pickupDrops.Count) ], randomPosition, Quaternion.identity);
     }
 }
 

@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class playerplacer : MonoBehaviour
+public class PlayerPlacer : MonoBehaviour
 {
     public List<GameObject> players = new List<GameObject>();
     public List<GameObject> places = new List<GameObject>();
 
-    public bool blockmoving = false;
+    public bool blockMoving = false;
     public bool basedOnPoints = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -49,7 +49,7 @@ public class playerplacer : MonoBehaviour
             }
 
             Debug.Log(players[i].transform.position);
-            if (blockmoving)
+            if (blockMoving)
             {
                 players[i].GetComponent<PlayerMovement>().enabled = false;
             }

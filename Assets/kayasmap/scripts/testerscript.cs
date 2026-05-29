@@ -2,9 +2,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class testerscript : MonoBehaviour
+public class TesterScript : MonoBehaviour
 {
-    manager manager;
+    Manager manager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

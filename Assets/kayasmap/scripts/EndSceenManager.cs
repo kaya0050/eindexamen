@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Menu : MonoBehaviour
+public class EndScreenManager : MonoBehaviour
 {
     [Serializable]
     public class Stats
@@ -21,27 +21,27 @@ public class Menu : MonoBehaviour
     public TextMeshProUGUI playerStats;
 
     public TMP_InputField nameInput;
-    manager manager;
+    Manager manager;
     string textStats;
     void Start()
     {
-        manager = GameObject.FindAnyObjectByType<manager>();
+        manager = GameObject.FindAnyObjectByType<Manager>();
         savePath = Path.Combine(Application.persistentDataPath, "save.json");
 
         LoadStats();
 
         nameInput.text = score.playerName;
 
-        Updatetext();
+        UpdateText();
     }
 
     public void SaveStats()
     {
-        playermanager bestPlayer = null;
+        PlayerManager bestPlayer = null;
 
         foreach (var item in manager.players)
         {
-            playermanager player = item.GetComponent<playermanager>();
+            PlayerManager player = item.GetComponent<PlayerManager>();
 
             if (bestPlayer == null || player.points > bestPlayer.points)
             {
@@ -66,14 +66,14 @@ public class Menu : MonoBehaviour
         
         LoadStats();
 
-        Updatetext();
+        UpdateText();
     }
-    public void Updatetext()
+    public void UpdateText()
     {
         points.text = "highscore: " + score.playerName + " points: " + score.points;
         for (int i = 0; i < manager.players.Count; i++)
         {
-            playermanager mana = manager.players[i].GetComponent<playermanager>();
+            PlayerManager mana = manager.players[i].GetComponent<PlayerManager>();
             textStats += "player: " + mana.index + "\n"
               + "wins: " + mana.winTimes + "\n"
               + "points: " + mana.points + "\n\n";

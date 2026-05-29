@@ -18,7 +18,7 @@ public class RaceManager : MonoBehaviour
     public TextMeshProUGUI startTimerText;
     public TextMeshProUGUI timerText;
 
-    public playermanager playerManager;
+    public PlayerManager playerManager;
 
     private bool scoreGiven = false;
 
